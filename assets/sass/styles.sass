@@ -1,103 +1,176 @@
-@mixin rotate($deg: 360)
-    $sDeg: #{$deg}deg
-
-    -webkit-transform: rotate($sDeg)
-    -moz-transform: rotate($sDeg)
-    -ms-transform: rotate($sDeg)
-    -o-transform: rotate($sDeg)
-    transform: rotate($sDeg)
+* 
+  margin: 0
+  padding: 0
 
 
-$color-title: #D8BEB8 
-
-    
-    
-*
-    margin: 0
-    padding: 0
-.sidenav
-        height: 100% //* Full-height: remove this if you want "auto" height */
-        width: 160px //* Set the width of the sidebar */
-        position: fixed //* Fixed Sidebar (stay in place on scroll) */
-        z-index: 1 //* Stay on top */
-        top: 0 //* Stay at the top */
-        left: 0
-        // background-color: //* Black */
-        overflow-x: hidden // Disable horizontal scroll */
-        padding-top: 20px
-        
-        a 
-            padding: 6px 8px 6px 16px
-            text-decoration: none
-            font-size: 35px
-            color: #f1f1f1
-            display: block
-            margin: 10px 0 10px 30px
-        a:hover 
-            color:#818181 
-
-        #btnNav
-            i
-                
-                color: #f1f1f1
-                font-size: 40px
-                -webkit-transition: -webkit-transform .6s ease-in-out
-                -ms-transition: -ms-transform .6s ease-in-out
-                transition: transform .6s ease-in-out
-            i:hover
-                color: #818181 
-                @include rotate
+.sidenav 
+  height: 100%
+  width: 160px
+  position: fixed
+  z-index: 1
+  top: 0
+  left: 0
+  overflow-x: hidden
+  padding-top: 20px
 
 
+.sidenav a 
+  padding: 6px 8px 6px 16px
+  text-decoration: none
+  font-size: 35px
+  color: #f1f1f1
+  display: block
+  margin: 10px 0 10px 30px
 
 
-#welcome
-     background: url("/assets/img/welcome2.jpeg") no-repeat  center
-     width: 100%
-     min-height: 950px
-     #name
-        margin-bottom: 200px
-        h1 
-            // font-family: 'Nothing You Could Do', cursive
-            // font-family: 'Alex Brush', cursive
-            // font-family: 'Niconne', cursive
-            font-family: 'Bilbo Swash Caps', cursive
-            font-size: 150px
-            padding: 10px
-            color: #D8BEB8  
-            letter-spacing: 20px
-            text-shadow: 2px 2px hsla(0, 0%, 0%, 0.4)
-        
+.sidenav a:hover 
+  color: #818181
 
-#aboutMe
-    background: #232526 
-    background: -webkit-linear-gradient(to right, #414345, #232526)  
-    background: linear-gradient(to right, #414345, #232526)
-    min-height: 950px
-    .container
-        div
-            div
-                h3
-                    font-size: 30px
-                    font-family: 'Alex Brush', cursive 
-                    color: $color-title
 
-#work
-    min-height: 950px
-    background: #757F9A
-    background: -webkit-linear-gradient(to right, #D7DDE8, #757F9A)
-    background: linear-gradient(to right, #D7DDE8, #757F9A)
+.sidenav #btnNav i 
+  color: #f1f1f1
+  font-size: 40px
+  -webkit-transition: -webkit-transform 0.6s ease-in-out
+  -ms-transition: -ms-transform 0.6s ease-in-out
+  transition: transform 0.6s ease-in-out
 
-#tools
-    min-height: 950px
-    min-height: 950px
-    background: #757F9A
-    background: -webkit-linear-gradient(to right, #24c6dc, #514a9d)
-    background: linear-gradient(to right, #24c6dc, #514a9d)
 
-#contact
-    min-height: 950px
-    min-height: 950px
-    background: #757F9A
-    background: -webkit-linear-gradient(to right, #ed4264, #ffedbc)
-    background: linear-gradient(to right, #ed4264, #ffedbc)
+.sidenav #btnNav i:hover 
+  color: #818181
+  -webkit-transform: rotate(360deg)
+  -moz-transform: rotate(360deg)
+  -ms-transform: rotate(360deg)
+  -o-transform: rotate(360deg)
+  transform: rotate(360deg)
+
+
+#aboutMe .container div div h3,
+#work .container div div h3,
+#tools .container div div h3,
+#contact .container div div h3 
+  font-size: 50px
+  font-family: "Alex Brush", cursive
+  letter-spacing: 5px
+  margin-top: 20px
+
+
+#welcome 
+  background: url("/assets/img/welcome2.jpeg") no-repeat center
+  width: 100%
+  min-height: 950px
+
+
+#welcome #name 
+  margin-bottom: 200px
+
+
+#welcome #name h1 
+  font-family: "Bilbo Swash Caps", cursive
+  font-size: 150px
+  padding: 10px
+  color: #D8BEB8
+  letter-spacing: 20px
+  text-shadow: 2px 2px rgba(0, 0, 0, 0.4)
+
+
+#aboutMe 
+  background: #232526
+  background: -webkit-linear-gradient(to right, #414345, #232526)
+  background: linear-gradient(to right, #414345, #232526)
+  min-height: 950px
+
+
+#aboutMe .container div div h3 
+  color: #D8BEB8
+
+
+#work 
+  min-height: 950px
+  background: #757F9A
+  background: -webkit-linear-gradient(to right, #D7DDE8, #757F9A)
+  background: linear-gradient(to right, #D7DDE8, #757F9A)
+
+
+#tools 
+  min-height: 950px
+  min-height: 950px
+  background: #757F9A
+  background: -webkit-linear-gradient(to right, #24c6dc, #514a9d)
+  background: linear-gradient(to right, #24c6dc, #514a9d)
+
+
+#contact 
+  min-height: 950px
+  min-height: 950px
+  background: #757F9A
+  background: -webkit-linear-gradient(to right, #ed4264, #ffedbc)
+  background: linear-gradient(to right, #ed4264, #ffedbc)
+
+
+/* ----------------cards-------------- */
+.card 
+  cursor: pointer
+  width: 230px
+  height: 380px
+
+
+.front, .back 
+  width: 100%
+  height: 100%
+  overflow: hidden
+  backface-visibility: hidden
+  position: absolute
+  transition: transform 0.6s linear
+
+
+.front img 
+  height: 100%
+
+
+.front 
+  transform: perspective(600px) rotateY(0deg)
+
+
+.back 
+  background: #f1f1f1
+  transform: perspective(600px) rotateY(180deg)
+
+
+.back-content 
+  color: #2c3e50
+  text-align: center
+  width: 100%
+
+
+.sm 
+  margin: 20px 0
+
+
+.sm a 
+  display: inline-flex
+  width: 40px
+  height: 40px
+  justify-content: center
+  align-items: center
+  color: #2c3e50
+  font-size: 18px
+  transition: 0.4s
+  border-radius: 50%
+
+
+.sm a:hover 
+  background: #2c3e50
+  color: white
+
+
+.card:hover > .front 
+  transform: perspective(600px) rotateY(-180deg)
+
+
+.card:hover > .back 
+  transform: perspective(600px) rotateY(0deg)
+
+
+/*# sourceMappingURL=styles.css.map */
+
+/*# sourceMappingURL=styles.sass.map */

@@ -1,0 +1,58 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.sidenav {
+  height: 100%;
+  width: 160px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #818181;
+  display: block;
+}
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+.sidenav #btnNav i {
+  margin-left: 20px;
+  color: #818181;
+  font-size: 40px;
+  -webkit-transition: -webkit-transform 0.6s ease-in-out;
+  -ms-transition: -ms-transform 0.6s ease-in-out;
+  transition: transform 0.6s ease-in-out;
+}
+.sidenav #btnNav i:hover {
+  color: #f1f1f1;
+  -webkit-transform: rotate(360deg);
+  -moz-transform: rotate(360deg);
+  -ms-transform: rotate(360deg);
+  -o-transform: rotate(360deg);
+  transform: rotate(360deg);
+}
+
+#welcome {
+  background: url("/assets/img/welcome2.jpeg") no-repeat center;
+  width: 100%;
+  min-height: 950px;
+}
+#welcome #name {
+  margin-top: 50px;
+  background: #c3c3c3;
+}
+
+#aboutMe {
+  background-color: black;
+  min-height: 950px;
+}
+
+/*# sourceMappingURL=styles.css.map */

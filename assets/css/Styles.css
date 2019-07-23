@@ -10,29 +10,86 @@
   z-index: 1;
   top: 0;
   left: 0;
-  background-color: #111;
   overflow-x: hidden;
   padding-top: 20px;
 }
 .sidenav a {
   padding: 6px 8px 6px 16px;
   text-decoration: none;
-  font-size: 25px;
-  color: #818181;
+  font-size: 35px;
+  color: #f1f1f1;
   display: block;
+  margin: 10px 0 10px 30px;
 }
 .sidenav a:hover {
+  color: #818181;
+}
+.sidenav #btnNav i {
   color: #f1f1f1;
+  font-size: 40px;
+  -webkit-transition: -webkit-transform 0.6s ease-in-out;
+  -ms-transition: -ms-transform 0.6s ease-in-out;
+  transition: transform 0.6s ease-in-out;
+}
+.sidenav #btnNav i:hover {
+  color: #818181;
+  -webkit-transform: rotate(360deg);
+  -moz-transform: rotate(360deg);
+  -ms-transform: rotate(360deg);
+  -o-transform: rotate(360deg);
+  transform: rotate(360deg);
 }
 
 #welcome {
-  background: url("/assets/img/welcome.jpeg") no-repeat center;
+  background: url("/assets/img/welcome2.jpeg") no-repeat center;
+  width: 100%;
   min-height: 950px;
+}
+#welcome #name {
+  margin-bottom: 200px;
+}
+#welcome #name h1 {
+  font-family: "Bilbo Swash Caps", cursive;
+  font-size: 150px;
+  padding: 10px;
+  color: #D8BEB8;
+  letter-spacing: 20px;
+  text-shadow: 2px 2px rgba(0, 0, 0, 0.4);
 }
 
 #aboutMe {
-  background-color: black;
+  background: #232526;
+  background: -webkit-linear-gradient(to right, #414345, #232526);
+  background: linear-gradient(to right, #414345, #232526);
   min-height: 950px;
+}
+#aboutMe .container div div h3 {
+  font-size: 30px;
+  font-family: "Alex Brush", cursive;
+  color: #D8BEB8;
+}
+
+#work {
+  min-height: 950px;
+  background: #757F9A;
+  background: -webkit-linear-gradient(to right, #D7DDE8, #757F9A);
+  background: linear-gradient(to right, #D7DDE8, #757F9A);
+}
+
+#tools {
+  min-height: 950px;
+  min-height: 950px;
+  background: #757F9A;
+  background: -webkit-linear-gradient(to right, #24c6dc, #514a9d);
+  background: linear-gradient(to right, #24c6dc, #514a9d);
+}
+
+#contact {
+  min-height: 950px;
+  min-height: 950px;
+  background: #757F9A;
+  background: -webkit-linear-gradient(to right, #ed4264, #ffedbc);
+  background: linear-gradient(to right, #ed4264, #ffedbc);
 }
 
 /*# sourceMappingURL=styles.css.map */

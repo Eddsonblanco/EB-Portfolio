@@ -1,39 +1,103 @@
+@mixin rotate($deg: 360)
+    $sDeg: #{$deg}deg
 
-    
+    -webkit-transform: rotate($sDeg)
+    -moz-transform: rotate($sDeg)
+    -ms-transform: rotate($sDeg)
+    -o-transform: rotate($sDeg)
+    transform: rotate($sDeg)
+
+
+$color-title: #D8BEB8 
+
     
     
 *
     margin: 0
     padding: 0
-.sidenav 
+.sidenav
         height: 100% //* Full-height: remove this if you want "auto" height */
         width: 160px //* Set the width of the sidebar */
         position: fixed //* Fixed Sidebar (stay in place on scroll) */
         z-index: 1 //* Stay on top */
         top: 0 //* Stay at the top */
         left: 0
-        background-color: #111 //* Black */
+        // background-color: //* Black */
         overflow-x: hidden // Disable horizontal scroll */
         padding-top: 20px
+        
         a 
             padding: 6px 8px 6px 16px
             text-decoration: none
-            font-size: 25px
-            color: #818181
+            font-size: 35px
+            color: #f1f1f1
             display: block
+            margin: 10px 0 10px 30px
         a:hover 
-            color: #f1f1f1 
+            color:#818181 
+
+        #btnNav
+            i
+                
+                color: #f1f1f1
+                font-size: 40px
+                -webkit-transition: -webkit-transform .6s ease-in-out
+                -ms-transition: -ms-transform .6s ease-in-out
+                transition: transform .6s ease-in-out
+            i:hover
+                color: #818181 
+                @include rotate
+
 
 
 
 #welcome
-     background: url("/assets/img/welcome.jpeg") no-repeat  center
+     background: url("/assets/img/welcome2.jpeg") no-repeat  center
+     width: 100%
      min-height: 950px
-
-#aboutMe
-    background-color: black
-    min-height: 950px
-
-
+     #name
+        margin-bottom: 200px
+        h1 
+            // font-family: 'Nothing You Could Do', cursive
+            // font-family: 'Alex Brush', cursive
+            // font-family: 'Niconne', cursive
+            font-family: 'Bilbo Swash Caps', cursive
+            font-size: 150px
+            padding: 10px
+            color: #D8BEB8  
+            letter-spacing: 20px
+            text-shadow: 2px 2px hsla(0, 0%, 0%, 0.4)
         
 
+#aboutMe
+    background: #232526 
+    background: -webkit-linear-gradient(to right, #414345, #232526)  
+    background: linear-gradient(to right, #414345, #232526)
+    min-height: 950px
+    .container
+        div
+            div
+                h3
+                    font-size: 30px
+                    font-family: 'Alex Brush', cursive 
+                    color: $color-title
+
+#work
+    min-height: 950px
+    background: #757F9A
+    background: -webkit-linear-gradient(to right, #D7DDE8, #757F9A)
+    background: linear-gradient(to right, #D7DDE8, #757F9A)
+
+#tools
+    min-height: 950px
+    min-height: 950px
+    background: #757F9A
+    background: -webkit-linear-gradient(to right, #24c6dc, #514a9d)
+    background: linear-gradient(to right, #24c6dc, #514a9d)
+
+#contact
+    min-height: 950px
+    min-height: 950px
+    background: #757F9A
+    background: -webkit-linear-gradient(to right, #ed4264, #ffedbc)
+    background: linear-gradient(to right, #ed4264, #ffedbc)

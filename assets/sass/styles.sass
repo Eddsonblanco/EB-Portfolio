@@ -1,4 +1,6 @@
 $color-title: #D8BEB8
+$color-titledark: #292121
+$color-primary: #4d4d4e
   
   
 * 
@@ -19,13 +21,14 @@ html
   left: 0
   overflow-x: hidden
   padding-top: 20px
+  
 
 
 .sidenav a 
   padding: 6px 8px 6px 16px
   text-decoration: none
   font-size: 35px
-  color: #f1f1f1
+  color: $color-primary
   display: block
   margin: 10px 0 10px 30px
 
@@ -35,7 +38,7 @@ html
 
 
 .sidenav #btnNav i 
-  color: #f1f1f1
+  color: $color-primary
   font-size: 40px
   -webkit-transition: -webkit-transform 0.6s ease-in-out
   -ms-transition: -ms-transform 0.6s ease-in-out
@@ -55,29 +58,43 @@ html
 #work .container div div h3,
 #tools .container div div h3,
 #contact .container div div h3 
-  font-size: 50px
-  font-family: "Alex Brush", cursive
+  font-size: 40px
+  // font-family: 'Darker Grotesque', sans-serif
+  font-family: 'Josefin Sans', sans-serif
+  // font-family: 'Rajdhani', sans-serif
   letter-spacing: 5px
   margin-top: 20px
 
 
 #welcome 
-  background: url("../img/welcome2.jpeg") no-repeat center
-  width: 100%
+  background: url("https://images.unsplash.com/photo-1490598000245-075175152d25?ixlib=rb-1.2.1&auto=format&fit=crop&w=1700&q=80") no-repeat 
   min-height: 950px
+  
 
 
 #welcome #name 
+  
+  padding: 10px
   margin-bottom: 200px
 
 
 #welcome #name h1 
-  font-family: "Bilbo Swash Caps", cursive
-  font-size: 150px
-  padding: 10px
-  color: #D8BEB8
-  letter-spacing: 20px
-  text-shadow: 2px 2px rgba(0, 0, 0, 0.4)
+  margin-bottom: 0px
+  font-size: 80px
+  padding: 0px
+  color: $color-titledark
+  letter-spacing: 10px
+  text-shadow: 3px 3px rgba(0, 0, 0, 0.3)
+  // font-family: 'Darker Grotesque', sans-serif
+  font-family: 'Josefin Sans', sans-serif
+  // font-family: 'Rajdhani', sans-serif
+
+#welcome #name h2 
+  font-size: 20px
+  padding: 0px
+  color: #292121
+  letter-spacing: 1px
+  // text-shadow: 2px 2px rgba(0, 0, 0, 0.4)
 
 
 #aboutMe 
@@ -93,24 +110,34 @@ html
 
 #work 
   min-height: 950px
+  color: $color-titledark
+  
   
   
 
 
 #tools 
+  color: $color-title
   min-height: 950px
-  min-height: 950px
-  background: #757F9A
-  background: -webkit-linear-gradient(to right, #24c6dc, #514a9d)
-  background: linear-gradient(to right, #24c6dc, #514a9d)
+  background: #232526
+  background: -webkit-linear-gradient(to right, #414345, #232526)
+  background: linear-gradient(to right, #414345, #232526)
+  .container 
+    .row
+      .tech
+        margin: 100px
+        a 
+          font-size: 35px
+          color: #fff
+          padding: 10px
+        
+        
+
+  
 
 
-#contact 
-  min-height: 950px
-  min-height: 950px
-  background: #757F9A
-  background: -webkit-linear-gradient(to right, #ed4264, #ffedbc)
-  background: linear-gradient(to right, #ed4264, #ffedbc)
+#footer
+
 
 
 /* ----------------cards-------------- */
@@ -128,7 +155,9 @@ html
   
 
 
-.cards
+#cards
+  margin: 50px 0px 50px 0px
+  
   
 
 

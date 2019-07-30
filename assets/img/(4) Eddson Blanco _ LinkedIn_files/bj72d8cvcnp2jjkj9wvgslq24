@@ -1,0 +1,217 @@
+define("msg-rich-media/components/attachment-display",["exports","ember-stdlib/utils/is-browser","msg-shared/utils/file-meta","msg-shared/utils/constants","msg-rich-media/templates/components/attachment-display"],function(e,t,a,s,i){"use strict"
+Object.defineProperty(e,"__esModule",{value:!0})
+e.default=void 0
+var n=s.default.ATTACHMENT_SCAN_STATUS,r=n.VIRUS_DETECTED,l=n.VIRUS_NOT_DETECTED,m=n.SCANNING,o=n.ERROR,d=Ember.Component.extend({layout:i.default,classNames:["msg-s-event-listitem__attachment-item"],classNameBindings:["scanInProgress:msg-s-event-listitem__attachment-item--is-scanning","downloaded:msg-s-event-listitem__attachment-item--downloaded","enableMsgFwd:msg-s-event-listitem__attachment-item--msg-fwd-enabled"],pageKey:"flagship3_messaging_comp_message_list_attachment",jet:Ember.inject.service("jet"),lix:Ember.inject.service("lix"),store:Ember.inject.service("store"),zoomed:!1,showControls:!0,previewModalIsOpen:void 0,isGeneric:Ember.computed.equal("mediaTypeExtension","generic").readOnly(),scanCount:0,scanStatus:void 0,scanFailed:Ember.computed.equal("scanStatus",r).readOnly(),scanPassed:Ember.computed.equal("scanStatus",l).readOnly(),scanInProgress:Ember.computed.equal("scanStatus",m).readOnly(),scanError:Ember.computed.equal("scanStatus",o).readOnly(),showDownload:!1,showFailure:Ember.computed.or("scanFailed","scanError").readOnly(),showPrompt:Ember.computed.or("showDownload","showFailure").readOnly(),downloadUrl:Ember.computed.alias("attachment.reference").readOnly(),init:function(){this._super.apply(this,arguments)
+var e=this.get("attachment.mediaType"),t=this.get("attachment.name")
+this.setProperties({isImage:(0,a.isSupportedImageFile)(e,t),filename:jSecure.htmlUnencode(t),mediaTypeExtension:(0,a.mediaTypeExtension)(e),formattedSize:(0,a.formattedSize)(this.get("attachment.byteSize")),attachmentId:this.get("attachment.id")})
+this.get("tracking").setupTrackableComponent(this)},tracking:Ember.inject.service("tracking"),globalHttpHeaders:Ember.inject.service("global-http-headers"),_startScan:function(){this.setProperties({scanCount:0,scanLog:[],scanStatus:m})
+this._getScanStatus()},_getScanStatus:function(){var e=this
+if(!this.isDestroying){this.get("scanLog").push(Date.now()+":request")
+this.get("store").adapterFor("-ember-m3").ajax("/voyager/api/messaging/attachments?action=scan","POST",{data:{mediaId:this.get("attachmentId")}}).then((function(t){return e._handleScanStatus(t.data.value)}),(function(){return e._handleScanRequestFailed()}))}},_handleScanStatus:function(e){if(!this.isDestroying){this.get("scanLog").push(Date.now()+":response:"+e)
+this.set("scanStatus",e)
+switch(e){case m:if(this.incrementProperty("scanCount")>=5){this.set("scanStatus",o)
+this.get("jet").logError({message:"Attachment scan timed out, createdAt: "+this.get("createdAt")+", id: "+this.get("attachmentId")+", log: "+this.get("scanLog").join(",")})}else this.runTask(this._getScanStatus,3e3)
+return
+case l:this.set("showDownload",!0)
+this.get("autoDownloadAttachments")&&this._autoDownload()
+return
+case r:case o:return
+default:this.set("scanStatus",o)}}},_handleScanRequestFailed:function(){if(!this.isDestroying){this.set("scanStatus",o)
+this.get("jet").logError({message:"Attachment scan request failed, id: "+this.get("attachmentId")})}},_autoDownload:function(){if(t.default){var e=document.createElement("a")
+e.setAttribute("href",this.get("downloadUrl"))
+e.setAttribute("download",this.get("filename"))
+e.style.display="none"
+document.body.appendChild(e)
+e.click()
+document.body.removeChild(e)
+this._handleDownloaded()}},_handleDownloaded:function(){this.setProperties({showDownload:!1,downloaded:!0})},actions:{attemptToDownload:function(){this.get("scanPassed")?this._handleDownloaded():this.get("scanInProgress")||this._startScan()},openPreviewModal:function(){this.set("previewModalIsOpen",!0)},toggleControls:function(){this.get("zoomed")&&this.toggleProperty("showControls")},toggleZoom:function(){this.toggleProperty("zoomed")
+this.set("showControls",!this.get("zoomed"))}}})
+e.default=d})
+define("msg-rich-media/components/attachment-drag-and-drop-error-display",["exports","msg-rich-media/templates/components/attachment-drag-and-drop-error-display"],function(e,t){"use strict"
+Object.defineProperty(e,"__esModule",{value:!0})
+e.default=void 0
+var a=Ember.Component.extend({layout:t.default})
+e.default=a})
+define("msg-rich-media/components/attachment-drag-and-drop",["exports","msg-shared/utils/attachments-handler","msg-rich-media/templates/components/attachment-drag-and-drop"],function(e,t,a){"use strict"
+Object.defineProperty(e,"__esModule",{value:!0})
+e.default=void 0
+var s="MULTIPLE_FILES",i="INVALID_FILE_TYPE",n=/^image\/*/,r=["ai","psd","pdf","doc","docx","csv","zip","rar","ppt","pptx","pps","ppsx","odt","rtf","xls","xlsx","txt","pub","html","7z","eml"],l=Ember.Component.extend({layout:a.default,classNames:["msg-form__attachment-drag-and-drop","p1"],classNameBindings:["showUserEducationLayer:msg-form__attachment-drag-and-drop--user-education","isDraggingOverWindow:msg-form__attachment-drag-and-drop--over-window","isDraggingOverLayer:msg-form__attachment-drag-and-drop--over-layer"],jet:Ember.inject.service("jet"),tracking:Ember.inject.service("tracking"),vectorUpload:Ember.inject.service("vector@vector-upload"),i18n:Ember.inject.service("i18n"),persistentToastManager:Ember.inject.service("persistent-toast-manager"),lix:Ember.inject.service("lix"),isDraggingOverWindow:!1,isDraggingOverLayer:!1,init:function(){this._super.apply(this,arguments)
+this.windowDragCounter=0
+this.layerDragCounter=0
+this.attachmentsHandler=new t.default({vectorUpload:this.get("vectorUpload"),tracking:this.get("tracking"),jet:this.get("jet"),updateUI:this.get("addAttachment"),beforeUpload:this.get("beforeUpload"),afterUpload:this.afterDropUpload.bind(this)})
+this.get("tracking").setupTrackableComponent(this)
+this.get("tracking").setupPageViewComponent(this)},didInsertElement:function(){var e=this
+this._super.apply(this,arguments)
+this.addEventListener(window,"dragenter",(function(t){if(!e.isDestroying&&e._isFileDragAndDropEvent(t)){e.windowDragCounter+=1
+if(1===e.windowDragCounter){e.set("isDraggingOverWindow",!0)
+e.get("tracking").firePageViewEvent(e.get("trackingKeys").PAGE_VIEW.DRAG)}}}))
+this.addEventListener(window,"dragleave",(function(t){if(!e.isDestroying&&e._isFileDragAndDropEvent(t)){t.preventDefault()
+e.windowDragCounter-=1
+0===e.windowDragCounter&&e.set("isDraggingOverWindow",!1)}}))
+this.addEventListener(window,"drop",(function(t){if(!e.isDestroying&&e._isFileDragAndDropEvent(t)){e.windowDragCounter=0
+e.set("isDraggingOverWindow",!1)}}))},dragEnter:function(e){if(!this.isDestroying&&this._isFileDragAndDropEvent(e)){this.layerDragCounter+=1
+if(1===this.layerDragCounter){this.set("isDraggingOverLayer",!0)
+this.get("tracking").firePageViewEvent(this.get("trackingKeys").PAGE_VIEW.DROP)}}},dragLeave:function(e){if(!this.isDestroying&&this._isFileDragAndDropEvent(e)){e.preventDefault()
+this.layerDragCounter-=1
+0===this.layerDragCounter&&this.set("isDraggingOverLayer",!1)}},drop:function(e){if(!this.isDestroying||this._isFileDragAndDropEvent(e)){e.preventDefault()
+this.layerDragCounter=0
+this.set("isDraggingOverLayer",!1)
+var t=e.dataTransfer.files
+if(0!==t.length)if(t.length>1)this.get("onError")(s)
+else{var a=t[0]
+if(this._isAcceptedFileType(a)){this.get("tracking").fireInteractionEvent(this.get("trackingKeys").INTERACTION.DROPPED)
+this.attachmentsHandler.uploadAttachment(a)}else this.get("onError")(i)}}},dragOver:function(e){e.preventDefault()},_isFileDragAndDropEvent:function(e){return-1!==Array.prototype.indexOf.call(e.dataTransfer.types,"Files")},_isAcceptedFileType:function(e){if(!e.type)return!1
+if(n.test(e.type))return!0
+var t=this._getFileExtension(e.name)
+return-1!==r.indexOf(t)},_getFileExtension:function(e){return e.includes(".")?e.split(".").pop().toLowerCase():""},afterDropUpload:function(){this.get("tracking").fireInteractionEvent(this.get("trackingKeys").INTERACTION.UPLOADED)
+this.get("afterUpload")()}})
+e.default=l})
+define("msg-rich-media/components/audio-display",["exports","shared/utils/html-safe","ember-stdlib/utils/is-browser"],function(e,t,a){"use strict"
+Object.defineProperty(e,"__esModule",{value:!0})
+e.default=void 0
+var s=Ember.Component.extend({classNames:["msg-s-event-listitem__audio"],tagName:"button",attributeBindings:["style"],trackingPrefix:"",style:Ember.computed("duration",(function(){var e=Math.max(0,Math.min(this.get("duration")/60,1))
+return(0,t.default)("width: calc(75px + "+e+" * (100% - 75px));")})).readOnly(),roundedRemainingTime:Ember.computed("currentTime","duration",(function(){return Math.round(this.get("duration")-this.get("currentTime"))})).readOnly(),init:function(){this._super.apply(this,arguments)
+this.setProperties({audio:this._setupAudio(),isPlaying:!1,currentTime:0,duration:this.get("mediaAttachment.audioMetadata.duration")/1e3,customPrefixFormat:{prefixInsignificants:!1,prefixSeconds:!0}})
+var e=this.get("audio")
+e.addEventListener("playing",this._handlePlaybackStarted.bind(this))
+e.addEventListener("ended",this._handlePlaybackEnded.bind(this))
+this.get("tracking").setupTrackableComponent(this)},tracking:Ember.inject.service("tracking"),_setupAudio:function(){return new window.Audio(this.get("mediaAttachment.audioMetadata.url"))},_handlePlaybackStarted:function(){this.get("tracking").fireInteractionEvent(this.get("trackingPrefix")+"play_successful_voice_message")
+this._updateProgress()},_updateProgress:function(){var e=this
+a.default&&window.requestAnimationFrame((function(){if(e.get("isPlaying")){e.set("currentTime",e.get("audio").currentTime)
+e._updateProgress()}}))},_handlePlaybackEnded:function(){this.setProperties({isPlaying:!1,currentTime:0})},click:function(){this.get("isPlaying")?this._pauseAudio():this._playAudio()},_playAudio:function(){this.set("isPlaying",!0)
+this.get("audio").play()
+this.get("tracking").fireInteractionEvent(this.get("trackingPrefix")+"play_voice_message")},_pauseAudio:function(){this.set("isPlaying",!1)
+this.get("audio").pause()
+this.get("tracking").fireInteractionEvent(this.get("trackingPrefix")+"pause_voice_message")}})
+e.default=s})
+define("msg-rich-media/components/content-preview",["exports","msg-rich-media/templates/components/content-preview"],function(e,t){"use strict"
+Object.defineProperty(e,"__esModule",{value:!0})
+e.default=void 0
+var a=Ember.Component.extend({layout:t.default,pageKey:"flagship3_messaging_comp_content_preview",classNames:["msg-content-preview"]})
+e.default=a})
+define("msg-rich-media/components/forward-preview",["exports","msg-data/utils/view-model-wrappers"],function(e,t){"use strict"
+Object.defineProperty(e,"__esModule",{value:!0})
+e.default=void 0
+var a=Ember.Component.extend({tagName:"",formatter:Ember.inject.service("formatter"),authenticatedUser:Ember.inject.service("authentication@authenticated-user"),init:function(){this._super.apply(this,arguments)
+var e=this.get("forwardedContent"),a=this.get("forwardedEvent")
+if(a)this.setProperties({from:a.get("from"),publicIdentifier:a.get("from.miniProfile.publicIdentifier"),createdAt:a.get("createdAt"),message:a.get("eventContent.attributedBody.text")})
+else{var s=e.get("originalFrom"),i=t.default.wrapMessagingEntity(s,{authenticatedUser:this.get("authenticatedUser"),formatter:this.get("formatter"),content:s}),n=e.get("originalFrom.miniProfile.publicIdentifier"),r=e.get("originalCreatedAt"),l=e.get("forwardedBody.text")
+this.setProperties({from:i,publicIdentifier:n,createdAt:r,message:l})}}})
+e.default=a})
+define("msg-rich-media/components/upload-attachment-previews",["exports","ember-app-scheduler","msg-rich-media/templates/components/upload-attachment-previews"],function(e,t,a){"use strict"
+Object.defineProperty(e,"__esModule",{value:!0})
+e.default=void 0
+var s=Ember.Component.extend({layout:a.default,classNames:"msg-form__attachment-previews",init:function(){this._super.apply(this,arguments)
+this.set("attachments",this.getWithDefault("attachments",[]))},didRender:function(){var e=this
+this._super.apply(this,arguments)
+this.get("attachments.length")>1&&(0,t.whenRouteIdle)().then((function(){e.element&&(e.element.scrollTop=e.element.scrollHeight)}))}})
+e.default=s})
+define("msg-rich-media/components/video-display",["exports"],function(e){"use strict"
+Object.defineProperty(e,"__esModule",{value:!0})
+e.default=void 0
+var t=Ember.Component.extend({classNames:["msg-s-event-listitem__video"],init:function(){this._super.apply(this,arguments)
+this.set("mediaAttachment.videoPlayMetadata.progressiveStreams.firstObject.mediaType","video/mp4")}})
+e.default=t})
+define("msg-rich-media/config/environment",["exports"],function(e){"use strict"
+Object.defineProperty(e,"__esModule",{value:!0})
+e.default=void 0
+var t
+try{var a=document.querySelector('meta[name="msg-rich-media/config/environment"]').getAttribute("content")
+t=JSON.parse(unescape(a))}catch(i){t={}}var s=t
+e.default=s})
+define.alias("ember-cli-pemberly-i18n/helpers/bidi-dir","msg-rich-media/helpers/bidi-dir")
+define.alias("ember-cli-pemberly-i18n/helpers/format-currency","msg-rich-media/helpers/format-currency")
+define.alias("ember-cli-pemberly-i18n/helpers/format-date","msg-rich-media/helpers/format-date")
+define.alias("ember-cli-pemberly-i18n/helpers/format-name","msg-rich-media/helpers/format-name")
+define.alias("ember-cli-pemberly-i18n/helpers/format-number","msg-rich-media/helpers/format-number")
+define.alias("ember-cli-pemberly-i18n/helpers/format-time","msg-rich-media/helpers/format-time")
+define.alias("ember-cli-pemberly-i18n/helpers/format-truncate","msg-rich-media/helpers/format-truncate")
+define.alias("ember-cli-pemberly-i18n/helpers/is-any-locale","msg-rich-media/helpers/is-any-locale")
+define.alias("ember-cli-pemberly-i18n/helpers/is-cjk-language","msg-rich-media/helpers/is-cjk-language")
+define.alias("ember-cli-pemberly-i18n/helpers/is-rtl-content","msg-rich-media/helpers/is-rtl-content")
+define.alias("ember-cli-pemberly-i18n/helpers/is-rtl-language","msg-rich-media/helpers/is-rtl-language")
+define.alias("ember-cli-pemberly-i18n/helpers/t-link-to","msg-rich-media/helpers/t-link-to")
+define.alias("ember-cli-pemberly-i18n/helpers/t-make-name","msg-rich-media/helpers/t-make-name")
+define.alias("ember-cli-pemberly-i18n/helpers/t","msg-rich-media/helpers/t")
+define.alias("ember-cli-pemberly-i18n/initializers/i18n","msg-rich-media/initializers/i18n")
+define("msg-rich-media/instance-initializers/-t-link-to",["exports","ember-stdlib/utils/is-browser"],function(e,t){"use strict"
+Object.defineProperty(e,"__esModule",{value:!0})
+e.initialize=a
+e.default=void 0
+function a(e){t.default&&e.lookup("service:-t-link-to")}var s={name:"-t-link-to",initialize:a}
+e.default=s})
+define("msg-rich-media/instance-initializers/locale",["exports","ember-stdlib/utils/is-browser","msg-rich-media/services/locale"],function(e,t,a){"use strict"
+Object.defineProperty(e,"__esModule",{value:!0})
+e.initialize=n
+e.default=void 0
+var s=/([a-z]{2}_[A-Z]{2})/
+function i(e){var t=document.querySelector("meta[name="+e+"]")
+if(t)return t.getAttribute("content")}function n(e){if(t.default){var n,r=e.lookup("service:locale")
+if(!n){var l=(function(){var e=i("i18nLocale"),t={}
+e&&(t.locale=e)
+return t})()
+l.locale&&s.test(l.locale)&&(n=l.locale)}if(!n){Ember.Logger.info("Didn't find locale meta tag. Defaulting to "+a.DEFAULT_LOCALE)
+n=a.DEFAULT_LOCALE}var m=i("requestIpCountryCode")
+r.setProperties({interfaceLocale:n,requestIpCountryCode:m})}}var r={name:"locale",initialize:n}
+e.default=r})
+define.alias("ember-cli-pemberly-i18n/services/-t-link-to","msg-rich-media/services/-t-link-to")
+define.alias("ember-cli-pemberly-i18n/services/formatter","msg-rich-media/services/formatter")
+define.alias("ember-cli-pemberly-i18n/services/i18n","msg-rich-media/services/i18n")
+define.alias("ember-cli-pemberly-i18n/services/locale","msg-rich-media/services/locale")
+define("msg-rich-media/templates/components/attachment-display",["exports"],function(e){"use strict"
+Object.defineProperty(e,"__esModule",{value:!0})
+e.default=void 0
+var t=Ember.HTMLBars.template({id:"u57Xa2Mq",block:'{"symbols":["closeModal"],"statements":[[4,"if",[[23,["forwardAttachment"]]],null,{"statements":[[4,"if",[[23,["enableMsgFwd"]]],null,{"statements":[[0,"    "],[7,"div"],[11,"class","msg-s-event-listitem__forward-arrow-common msg-s-event-listitem__forward-arrow-backer"],[9],[10],[0,"\\n    "],[7,"button"],[11,"class","msg-s-event-listitem__forward-arrow-common msg-s-event-listitem__forward-arrow"],[12,"title",[27,"t",["i18n_forward_attachment_a11y","msg-rich-media/templates/components/attachment-display"],[["filename","senderName"],[[23,["filename"]],[23,["event","from","familiarName"]]]]]],[3,"action",[[22,0,[]],[23,["forwardAttachment"]]]],[9],[0,"\\n      "],[1,[27,"ember-cli-pemberly-artdeco@li-icon",null,[["type","size","a11y-text"],["forward-icon","small",[27,"t",["i18n_forward_attachment_a11y","msg-rich-media/templates/components/attachment-display"],[["filename","senderName"],[[23,["filename"]],[23,["event","from","familiarName"]]]]]]]],false],[0,"\\n    "],[10],[0,"\\n"]],"parameters":[]},{"statements":[[0,"    "],[7,"button"],[12,"class",[28,["msg-s-event-listitem__forward-attachment ",[27,"if",[[23,["isImage"]],"msg-s-event-listitem__forward-attachment--image","msg-s-event-listitem__forward-attachment--file"],null]]]],[3,"action",[[22,0,[]],[23,["forwardAttachment"]]]],[9],[0,"\\n      "],[1,[27,"ember-cli-pemberly-artdeco@li-icon",null,[["type","size","a11y-text"],["forward-icon","small",[27,"t",["i18n_forward_attachment_a11y","msg-rich-media/templates/components/attachment-display"],[["filename","senderName"],[[23,["filename"]],[23,["event","from","familiarName"]]]]]]]],false],[0,"\\n    "],[10],[0,"\\n"]],"parameters":[]}]],"parameters":[]},null],[0,"\\n"],[4,"if",[[23,["isImage"]]],null,{"statements":[[0,"  "],[7,"div"],[11,"class","msg-s-event-listitem__image-container"],[9],[0,"\\n    "],[7,"button"],[11,"data-control-name","photo_viewer"],[3,"action",[[22,0,[]],"openPreviewModal",[27,"tracking",null,[["control-name"],["photo_viewer"]]]]],[9],[0,"\\n      "],[7,"span"],[11,"class","visually-hidden"],[9],[1,[27,"t",["i18n_file_preview","msg-rich-media/templates/components/attachment-display"],[["filename"],[[23,["filename"]]]]],false],[10],[0,"\\n"],[0,"      "],[1,[27,"custom-image",null,[["url","class","alt","ghostType"],[[27,"unbound",[[23,["downloadUrl"]]],null],"msg-s-event-listitem__image block",[23,["filename"]],"image"]]],false],[0,"\\n    "],[10],[0,"\\n  "],[10],[0,"\\n"]],"parameters":[]},{"statements":[[0,"  "],[7,"a"],[12,"href",[27,"if",[[23,["scanPassed"]],[23,["downloadUrl"]]],null]],[11,"class","msg-s-event-listitem__download-attachment t-14 t-black--light t-normal"],[12,"download",[21,"filename"]],[11,"target","_blank"],[11,"rel","noopener noreferrer"],[11,"data-control-name","view_attachment"],[3,"action",[[22,0,[]],"attemptToDownload",[27,"tracking",null,[["control-name"],["view_attachment"]]]],[["preventDefault"],[[27,"if",[[23,["scanPassed"]],false,true],null]]]],[9],[0,"\\n    "],[7,"span"],[11,"class","visually-hidden"],[9],[1,[27,"t",["i18n_download","msg-rich-media/templates/components/attachment-display"],[["filename"],[[23,["filename"]]]]],false],[10],[0,"\\n    "],[7,"div"],[12,"class",[28,["msg-s-event-listitem__attachment-type display-flex msg-s-event-listitem__attachment-type--",[21,"mediaTypeExtension"]]]],[9],[0,"\\n"],[4,"if",[[23,["showPrompt"]]],null,{"statements":[[0,"        "],[7,"div"],[11,"class","msg-s-event-listitem__attachment-prompt text-align-center t-14 t-black t-bold"],[9],[0,"\\n"],[4,"if",[[23,["showFailure"]]],null,{"statements":[[0,"            "],[7,"span"],[11,"class","msg-s-event-listitem__attachment-error"],[9],[0,"\\n              "],[1,[27,"ember-cli-pemberly-artdeco@li-icon",null,[["animate","type","class"],[true,"yield-pebble-icon","flex-shrink-zero mr1"]]],false],[0,"\\n              "],[1,[27,"if",[[23,["scanFailed"]],[27,"t",["i18n_virus_detected","msg-rich-media/templates/components/attachment-display"],null],[27,"t",["i18n_scan_failed","msg-rich-media/templates/components/attachment-display"],null]],null],false],[0,"\\n            "],[10],[0,"\\n"]],"parameters":[]},{"statements":[[0,"            "],[1,[27,"t",["i18n_download_attachment","msg-rich-media/templates/components/attachment-display"],null],false],[0,"\\n"]],"parameters":[]}],[0,"        "],[10],[0,"\\n"]],"parameters":[]},{"statements":[[0,"        "],[7,"div"],[11,"class","flex-grow-1 truncate"],[9],[0,"\\n          "],[7,"h3"],[11,"class","attachment-filename"],[9],[0,"\\n            "],[1,[21,"filename"],false],[0,"\\n          "],[10],[0,"\\n          "],[7,"p"],[11,"class","attachment-filesize flex-shrink-zero"],[9],[0,"\\n            "],[1,[21,"formattedSize"],false],[0,"\\n          "],[10],[0,"\\n        "],[10],[0,"\\n        "],[7,"div"],[11,"class","display-flex align-items-center justify-center flex-shrink-zero"],[9],[0,"\\n          "],[7,"button"],[11,"class","msg-s-event-listitem__attachment-hover display-flex align-items-center justify-center"],[9],[0,"\\n"],[4,"if",[[23,["scanInProgress"]]],null,{"statements":[[0,"              "],[7,"p"],[11,"class","t-14 t-black--light t-bold"],[9],[0,"\\n                "],[1,[27,"t",["i18n_scanning","msg-rich-media/templates/components/attachment-display"],null],false],[0,"\\n              "],[10],[0,"\\n"]],"parameters":[]},{"statements":[[0,"              "],[1,[27,"ember-cli-pemberly-artdeco@li-icon",null,[["type","size","a11y-text"],["download-icon","small",[27,"t",["i18n_download_attachment","msg-rich-media/templates/components/attachment-display"],null]]]],false],[0,"\\n              "],[7,"p"],[11,"class","t-14 t-black--light t-bold"],[9],[0,"\\n                "],[1,[27,"t",["i18n_download_attachment","msg-rich-media/templates/components/attachment-display"],null],false],[0,"\\n              "],[10],[0,"\\n"]],"parameters":[]}],[0,"          "],[10],[0,"\\n        "],[10],[0,"\\n"]],"parameters":[]}],[0,"    "],[10],[0,"\\n  "],[10],[0,"\\n"]],"parameters":[]}],[0,"\\n"],[4,"shared@li-modal",null,[["modalClasses","isOpen"],["msg-modal msg-modal-preview",[23,["previewModalIsOpen"]]]],{"statements":[[0,"  "],[7,"div"],[12,"class",[28,["shared-modal-dialog ",[27,"if",[[23,["showControls"]],"msg-modal-preview--has-controls","msg-modal-preview--is-zoomed"],null]]]],[9],[0,"\\n    "],[7,"div"],[11,"class","msg-modal__primary-actions msg-modal-preview__full-width-item msg-modal-preview__primary-actions"],[9],[0,"\\n      "],[7,"button"],[11,"class","msg-modal__button msg-modal-preview__btn dismiss-btn"],[3,"action",[[22,0,[]],[22,1,[]]]],[9],[0,"\\n        "],[1,[27,"ember-cli-pemberly-artdeco@li-icon",null,[["type","size","a11y-text"],["cancel-icon","medium",[27,"t",["i18n_done","msg-rich-media/templates/components/attachment-display"],null]]]],false],[0,"\\n      "],[10],[0,"\\n    "],[10],[0,"\\n    "],[7,"figure"],[11,"class","msg-modal-preview__media-container"],[3,"action",[[22,0,[]],"toggleZoom"],[["on"],["doubleClick"]]],[3,"action",[[22,0,[]],"toggleControls"],[["on","preventDefault"],["click",false]]],[9],[0,"\\n      "],[1,[27,"custom-image",null,[["url","classNames","alt","ghostType"],[[23,["downloadUrl"]],"msg-modal-preview__image",[27,"t",["i18n_img_alt","msg-rich-media/templates/components/attachment-display"],[["filename"],[[23,["filename"]]]]],"image"]]],false],[0,"\\n      "],[7,"figcaption"],[11,"class","msg-modal-preview__full-width-item msg-modal-preview__caption"],[9],[0,"\\n        "],[7,"a"],[12,"href",[21,"downloadUrl"]],[12,"download",[21,"filename"]],[11,"target","_blank"],[11,"rel","noopener noreferrer"],[9],[0,"\\n          "],[1,[27,"ember-cli-pemberly-artdeco@li-icon",null,[["type","class","a11y-text"],["download-icon","msg-modal-preview__download",[27,"t",["i18n_download","msg-rich-media/templates/components/attachment-display"],[["filename"],[[23,["filename"]]]]]]]],false],[0,"\\n        "],[10],[0,"\\n        "],[7,"h3"],[11,"class","t-18 t-white--light t-bold"],[9],[1,[23,["attachment","displayName"]],false],[10],[0,"\\n        "],[7,"p"],[11,"class","t-14 t-white t-normal"],[9],[0,"\\n          "],[7,"span"],[11,"class","msg-modal-preview__extension"],[11,"aria-hidden","true"],[9],[1,[23,["attachment","extension"]],false],[10],[0,"\\n          "],[7,"span"],[11,"class","visually-hidden"],[9],[1,[27,"t",["i18n_filetype_v2_a11y","msg-rich-media/templates/components/attachment-display"],[["fileext"],[[23,["attachment","extension"]]]]],false],[10],[0,"\\n          "],[7,"span"],[11,"class","msg-modal-preview__filesize"],[11,"aria-hidden","true"],[9],[1,[23,["attachment","formattedSize"]],false],[10],[0,"\\n          "],[7,"span"],[11,"class","visually-hidden"],[9],[1,[27,"t",["i18n_filesize_v2_a11y","msg-rich-media/templates/components/attachment-display"],[["filesize"],[[23,["attachment","formattedSize"]]]]],false],[10],[0,"\\n        "],[10],[0,"\\n      "],[10],[0,"\\n    "],[10],[0,"\\n  "],[10],[0,"\\n"]],"parameters":[1]},null]],"hasEval":false}',meta:{moduleName:"msg-rich-media/templates/components/attachment-display.hbs"}})
+e.default=t})
+define("msg-rich-media/templates/components/attachment-drag-and-drop-error-display",["exports"],function(e){"use strict"
+Object.defineProperty(e,"__esModule",{value:!0})
+e.default=void 0
+var t=Ember.HTMLBars.template({id:"ejLxg022",block:'{"symbols":[],"statements":[[7,"div"],[11,"class","msg-form__attachment-drag-and-drop-error-display pv2 ph4 display-flex"],[9],[0,"\\n  "],[7,"p"],[11,"class","msg-form__attachment-drag-and-drop-error-text flex-1 t-12 t-bold"],[9],[0,"\\n"],[4,"if",[[27,"global-helpers@eq",[[23,["errorType"]],"MULTIPLE_FILES"],null]],null,{"statements":[[0,"      "],[1,[27,"t",["i18n_error_multiple_files","msg-rich-media/templates/components/attachment-drag-and-drop-error-display"],null],false],[0,"\\n"]],"parameters":[]},{"statements":[[0,"      "],[1,[27,"t",["i18n_error_invalid_file_type","msg-rich-media/templates/components/attachment-drag-and-drop-error-display"],null],false],[0,"\\n"]],"parameters":[]}],[0,"  "],[10],[0,"\\n\\n  "],[7,"button"],[11,"class","msg-form__attachment-drag-and-drop-error-dismiss-button"],[3,"action",[[22,0,[]],[23,["dismissError"]]]],[9],[0,"\\n    "],[1,[27,"ember-cli-pemberly-artdeco@li-icon",null,[["type","a11y-text","size"],["cancel-icon",[27,"t",["i18n_dismiss_error","msg-rich-media/templates/components/attachment-drag-and-drop-error-display"],null],"small"]]],false],[0,"\\n  "],[10],[0,"\\n"],[10],[0,"\\n"]],"hasEval":false}',meta:{moduleName:"msg-rich-media/templates/components/attachment-drag-and-drop-error-display.hbs"}})
+e.default=t})
+define("msg-rich-media/templates/components/attachment-drag-and-drop",["exports"],function(e){"use strict"
+Object.defineProperty(e,"__esModule",{value:!0})
+e.default=void 0
+var t=Ember.HTMLBars.template({id:"EZbdxFi1",block:'{"symbols":[],"statements":[[7,"div"],[11,"class","msg-form__attachment-drag-and-drop-content display-flex flex-column align-items-center justify-center"],[9],[0,"\\n  "],[7,"div"],[11,"class","msg-form__attachment-drag-and-drop-state-illustration"],[9],[10],[0,"\\n  "],[7,"div"],[11,"class","msg-form__attachment-drag-and-drop-text display-flex flex-column align-items-center justify-center"],[9],[0,"\\n    "],[7,"div"],[11,"class","msg-form__attachment-drag-and-drop-state-text t-16 t-bold"],[9],[0,"\\n      "],[1,[27,"if",[[23,["isDraggingOverLayer"]],[27,"t",["i18n_drop_file","msg-rich-media/templates/components/attachment-drag-and-drop"],null],[27,"t",["i18n_drag_file","msg-rich-media/templates/components/attachment-drag-and-drop"],null]],null],false],[0,"\\n    "],[10],[0,"\\n    "],[7,"div"],[11,"class","msg-form__attachment-drag-and-drop-discoverability-text text-align-center"],[9],[0,"\\n      "],[7,"div"],[11,"class","t-16 t-bold"],[9],[1,[27,"t",["i18n_select_file","msg-rich-media/templates/components/attachment-drag-and-drop"],null],false],[10],[0,"\\n      "],[7,"div"],[11,"class","t-14"],[9],[1,[27,"t",["i18n_or_drag_and_drop","msg-rich-media/templates/components/attachment-drag-and-drop"],null],false],[10],[0,"\\n    "],[10],[0,"\\n  "],[10],[0,"\\n"],[10],[0,"\\n"]],"hasEval":false}',meta:{moduleName:"msg-rich-media/templates/components/attachment-drag-and-drop.hbs"}})
+e.default=t})
+define("msg-rich-media/templates/components/audio-display",["exports"],function(e){"use strict"
+Object.defineProperty(e,"__esModule",{value:!0})
+e.default=void 0
+var t=Ember.HTMLBars.template({id:"e34sCga7",block:'{"symbols":[],"statements":[[7,"progress"],[11,"class","msg-s-event-listitem__audio-progress-bar"],[12,"value",[21,"currentTime"]],[12,"max",[21,"duration"]],[9],[0,"\\n"],[10],[0,"\\n\\n"],[7,"div"],[11,"class","msg-s-event-listitem__audio-icon-container relative"],[9],[0,"\\n"],[4,"if",[[23,["isPlaying"]]],null,{"statements":[[0,"    "],[1,[27,"ember-cli-pemberly-artdeco@li-icon",null,[["class","type","size","a11y-text"],["mh2 js-msg-audio_pause","pause-icon","small",[27,"t",["i18n_pause","msg-rich-media/templates/components/audio-display"],null]]]],false],[0,"\\n"]],"parameters":[]},{"statements":[[0,"    "],[1,[27,"ember-cli-pemberly-artdeco@li-icon",null,[["class","type","size","a11y-text"],["mh2 js-msg-audio_play","play-icon","small",[27,"t",["i18n_play","msg-rich-media/templates/components/audio-display"],null]]]],false],[0,"\\n"]],"parameters":[]}],[10],[0,"\\n\\n"],[7,"span"],[11,"class","msg-s-event-listitem__audio-time t-12 t-white t-normal"],[9],[0,"\\n  "],[1,[27,"i18n-helpers@format-duration",[[23,["roundedRemainingTime"]]],[["customPrefixFormat"],[[23,["customPrefixFormat"]]]]],false],[0,"\\n"],[10]],"hasEval":false}',meta:{moduleName:"msg-rich-media/templates/components/audio-display.hbs"}})
+e.default=t})
+define("msg-rich-media/templates/components/content-preview",["exports"],function(e){"use strict"
+Object.defineProperty(e,"__esModule",{value:!0})
+e.default=void 0
+var t=Ember.HTMLBars.template({id:"SAisvRux",block:'{"symbols":[],"statements":[[4,"link-to-external",["feed.update",[23,["feedUpdate","updateMetadata","urn"]]],[["class"],["msg-content-preview__link feed-container-theme"]],{"statements":[[0,"  "],[1,[27,"feed-shared@render-models/mini-update-v2",null,[["showFollowButton","update"],[false,[23,["feedUpdate"]]]]],false],[0,"\\n"]],"parameters":[]},null]],"hasEval":false}',meta:{moduleName:"msg-rich-media/templates/components/content-preview.hbs"}})
+e.default=t})
+define("msg-rich-media/templates/components/emoji/emoji-i18n",["exports"],function(e){"use strict"
+Object.defineProperty(e,"__esModule",{value:!0})
+e.default=void 0
+var t=Ember.HTMLBars.template({id:"F3ZlXYbv",block:'{"symbols":[],"statements":[[0,"\\n"],[0,"\\n"]],"hasEval":false}',meta:{moduleName:"msg-rich-media/templates/components/emoji/emoji-i18n.hbs"}})
+e.default=t})
+define("msg-rich-media/templates/components/emoji/emoji-popover",["exports"],function(e){"use strict"
+Object.defineProperty(e,"__esModule",{value:!0})
+e.default=void 0
+var t=Ember.HTMLBars.template({id:"Y2sCpsbo",block:'{"symbols":[],"statements":[],"hasEval":false}',meta:{moduleName:"msg-rich-media/templates/components/emoji/emoji-popover.hbs"}})
+e.default=t})
+define("msg-rich-media/templates/components/emoji/emoji-trigger",["exports"],function(e){"use strict"
+Object.defineProperty(e,"__esModule",{value:!0})
+e.default=void 0
+var t=Ember.HTMLBars.template({id:"PG0UJpYN",block:'{"symbols":[],"statements":[],"hasEval":false}',meta:{moduleName:"msg-rich-media/templates/components/emoji/emoji-trigger.hbs"}})
+e.default=t})
+define("msg-rich-media/templates/components/forward-preview",["exports"],function(e){"use strict"
+Object.defineProperty(e,"__esModule",{value:!0})
+e.default=void 0
+var t=Ember.HTMLBars.template({id:"Jz1piW94",block:'{"symbols":[],"statements":[[7,"div"],[11,"class","msg-s-forward-preview__forwarded-item mv2 t-14 t-black"],[9],[0,"\\n  "],[7,"div"],[11,"class","msg-s-forward-preview__forwarded-from"],[9],[0,"\\n    "],[1,[27,"messaging-base@primitives/event-listitem-avatar",null,[["sender"],[[23,["from"]]]]],false],[0,"\\n    "],[7,"div"],[9],[0,"\\n"],[4,"link-to-external",["profile.view",[23,["publicIdentifier"]]],[["class","data-control-name"],["msg-s-message-group__profile-link","view_profile"]],{"statements":[[7,"span"],[11,"class","msg-s-message-group__name t-14 t-black t-bold hoverable-link-text"],[9],[1,[23,["from","fullName"]],false],[10]],"parameters":[]},null],[10],[0,"\\n  "],[10],[0,"\\n"],[0,"  "],[7,"p"],[11,"class","msg-s-forward-preview__forwarded-body msg-form__reshared-content t-14 t-normal"],[9],[1,[21,"message"],false],[10],[0,"\\n  "],[7,"div"],[11,"class","msg-s-forward-preview__forwarded-details t-12 t-black--light t-normal"],[9],[0,"\\n    "],[7,"span"],[9],[1,[27,"t",["i18n_forwarded_label","msg-rich-media/templates/components/forward-preview"],null],false],[10],[0,"\\n    "],[7,"time"],[11,"class","msg-s-message-group__timestamp"],[9],[0,"\\n      "],[1,[27,"t",["i18n_original_sent_date","msg-rich-media/templates/components/forward-preview"],[["dayMonth","hourMinute"],[[27,"ember-cli-pemberly-i18n@format-date",[[23,["createdAt"]]],[["format","useTimeZone"],["fmt_md_medium",true]]],[27,"ember-cli-pemberly-i18n@format-time",[[23,["createdAt"]]],[["format","useTimeZone"],["fmt_hm",true]]]]]],false],[0,"\\n    "],[10],[0,"\\n  "],[10],[0,"\\n"],[10],[0,"\\n"]],"hasEval":false}',meta:{moduleName:"msg-rich-media/templates/components/forward-preview.hbs"}})
+e.default=t})
+define("msg-rich-media/templates/components/upload-attachment-previews",["exports"],function(e){"use strict"
+Object.defineProperty(e,"__esModule",{value:!0})
+e.default=void 0
+var t=Ember.HTMLBars.template({id:"mn8HpZqx",block:'{"symbols":["attachment"],"statements":[[4,"each",[[23,["attachments"]]],null,{"statements":[[0,"  "],[7,"figure"],[12,"class",[28,["msg-form__attachment-preview msg-attachment-preview pv2 pl3 pr4 ",[27,"if",[[22,1,["isError"]],"msg-attachment-preview--error",[27,"if",[[22,1,["isUploading"]],"msg-attachment-preview--uploading"],null]],null]]]],[9],[0,"\\n"],[4,"if",[[22,1,["isError"]]],null,{"statements":[[0,"      "],[1,[27,"ember-cli-pemberly-artdeco@li-icon",null,[["class","type","size"],["msg-attachment-preview__thumbnail EntityPhoto-square-2","error-pebble-icon","medium"]]],false],[0,"\\n"]],"parameters":[]},{"statements":[[4,"if",[[22,1,["isImage"]]],null,{"statements":[[0,"      "],[7,"div"],[11,"class","msg-attachment-preview__image-container"],[9],[0,"\\n        "],[1,[27,"custom-image",null,[["image","class","alt"],[[22,1,["reference"]],"msg-attachment-preview__image EntityPhoto-square-2",[22,1,["name"]]]]],false],[0,"\\n      "],[10],[0,"\\n"]],"parameters":[]},{"statements":[[0,"      "],[7,"div"],[12,"class",[28,["t-12 t-white t-bold msg-attachment-preview__attachment-type msg-attachment-preview__attachment-type--",[22,1,["mediaTypeExtension"]]]]],[9],[0,"\\n        "],[1,[27,"if",[[22,1,["isGeneric"]],[27,"ember-cli-pemberly-artdeco@li-icon",null,[["class","type"],["msg-attachment-preview__attachment-type-icon","document-icon"]]],[22,1,["mediaTypeExtension"]]],null],false],[0,"\\n      "],[10],[0,"\\n    "]],"parameters":[]}]],"parameters":[]}],[0,"\\n    "],[7,"figcaption"],[11,"class","flex-1 overflow-hidden ph2"],[9],[0,"\\n"],[4,"unless",[[23,["hideAttachmentInfo"]]],null,{"statements":[[0,"        "],[7,"div"],[11,"class","display-flex t-12 t-black--light t-normal"],[9],[0,"\\n          "],[7,"h3"],[11,"class","msg-attachment-preview__attachment-name t-12 t-black--light t-bold truncate"],[9],[1,[22,1,["name"]],false],[10],[0,"\\n          "],[7,"span"],[11,"class","msg-attachment-preview__bytesize flex-shrink-zero"],[9],[1,[22,1,["formattedSize"]],false],[10],[0,"\\n        "],[10],[0,"\\n"]],"parameters":[]},null],[4,"if",[[22,1,["isUploading"]]],null,{"statements":[[0,"        "],[7,"p"],[11,"class","msg-attachment-preview__status msg-attachment-preview__status--uploading t-12 t-black t-bold"],[9],[0,"\\n          "],[1,[27,"t",["attachment_status_uploading","msg-rich-media/templates/components/upload-attachment-previews"],null],false],[0,"\\n        "],[10],[0,"\\n"]],"parameters":[]},{"statements":[[4,"if",[[22,1,["isError"]]],null,{"statements":[[0,"        "],[7,"p"],[11,"class","msg-attachment-preview__status msg-attachment-preview__status--error t-12 t-black t-bold"],[9],[0,"\\n"],[4,"if",[[22,1,["customError"]]],null,{"statements":[[0,"            "],[1,[22,1,["customError"]],false],[0,"\\n"]],"parameters":[]},{"statements":[[0,"            "],[1,[27,"if",[[22,1,["isTypeError"]],[27,"t",["attachment_unsupported_type","msg-rich-media/templates/components/upload-attachment-previews"],null],[27,"if",[[22,1,["isSizeError"]],[27,"t",["attachment_unsupported_size","msg-rich-media/templates/components/upload-attachment-previews"],null],[27,"t",["attachment_status_error","msg-rich-media/templates/components/upload-attachment-previews"],null]],null]],null],false],[0,"\\n"]],"parameters":[]}],[0,"        "],[10],[0,"\\n"]],"parameters":[]},{"statements":[[0,"        "],[7,"p"],[11,"class","msg-attachment-preview__status t-12 t-black--light t-normal"],[9],[0,"\\n          "],[1,[27,"t",["attachment_status_attached","msg-rich-media/templates/components/upload-attachment-previews"],null],false],[0,"\\n        "],[10],[0,"\\n      "]],"parameters":[]}]],"parameters":[]}],[4,"if",[[22,1,["isUploading"]]],null,{"statements":[[0,"        "],[7,"progress"],[11,"class","msg-attachment-preview__upload-progress mt1"],[11,"max","100"],[12,"value",[22,1,["progress"]]],[9],[10],[0,"\\n"]],"parameters":[]},null],[0,"    "],[10],[0,"\\n\\n"],[4,"if",[[22,1,["isRetryable"]]],null,{"statements":[[0,"      "],[7,"button"],[11,"class","retry-attachment"],[12,"data-control-name",[23,["CONTROL_NAMES","SEND_RETRY"]]],[3,"action",[[22,0,[]],[22,1,["retryAttachment"]],[22,1,[]],[27,"tracking",null,[["control-name"],[[23,["CONTROL_NAMES","SEND_RETRY"]]]]]]],[9],[0,"\\n        "],[1,[27,"ember-cli-pemberly-artdeco@li-icon",null,[["type","ally-text","size"],["refresh-icon",[27,"t",["attachment_retry","msg-rich-media/templates/components/upload-attachment-previews"],null],"small"]]],false],[0,"\\n      "],[10],[0,"\\n"]],"parameters":[]},null],[0,"\\n    "],[7,"button"],[11,"class","remove-attachment"],[12,"data-control-name",[23,["CONTROL_NAMES","IMAGE_UPLOAD_CANCEL"]]],[3,"action",[[22,0,[]],[23,["removeAttachment"]],[22,1,[]],[27,"tracking",null,[["control-name"],[[23,["CONTROL_NAMES","IMAGE_UPLOAD_CANCEL"]]]]]]],[9],[0,"\\n      "],[1,[27,"ember-cli-pemberly-artdeco@li-icon",null,[["type","a11y-text","size"],["cancel-icon",[27,"t",["a11y_attachment_remove","msg-rich-media/templates/components/upload-attachment-previews"],[["attachmentName"],[[22,1,["name"]]]]],"small"]]],false],[0,"\\n    "],[10],[0,"\\n  "],[10],[0,"\\n"]],"parameters":[1]},null]],"hasEval":false}',meta:{moduleName:"msg-rich-media/templates/components/upload-attachment-previews.hbs"}})
+e.default=t})
+define("msg-rich-media/templates/components/video-display",["exports"],function(e){"use strict"
+Object.defineProperty(e,"__esModule",{value:!0})
+e.default=void 0
+var t=Ember.HTMLBars.template({id:"EyB8Cu1I",block:'{"symbols":[],"statements":[[1,[27,"video@messaging-video-loader",null,[["videoPlayMetadata","iconSize","onPlayerReady","isEmbeddableVideo"],[[23,["mediaAttachment","videoPlayMetadata"]],[23,["iconSize"]],[23,["onPlayerReady"]],true]]],false]],"hasEval":false}',meta:{moduleName:"msg-rich-media/templates/components/video-display.hbs"}})
+e.default=t})
+
+//# sourceMappingURL=engine.map

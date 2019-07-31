@@ -67,11 +67,15 @@ html
 #tools .container div div h3,
 #contact .container div div h3 
   font-size: 40px
-  // font-family: 'Darker Grotesque', sans-serif
   font-family: 'Josefin Sans', sans-serif
-  // font-family: 'Rajdhani', sans-serif
   letter-spacing: 5px
   margin-top: 20px
+  @media screen and (max-width: 500px)
+    font-size: 30px
+    font-family: 'Josefin Sans', sans-serif
+    letter-spacing: 4px
+    margin-top: 15px
+
 
 
 #welcome 
@@ -96,13 +100,18 @@ html
   // font-family: 'Darker Grotesque', sans-serif
   font-family: 'Josefin Sans', sans-serif
   // font-family: 'Rajdhani', sans-serif
+  @media screen and (max-width: 500px)
+    font-size: 50px
+    text-align: center
 
 #welcome #name h2 
   font-size: 20px
   padding: 0px
   color: #292121
   letter-spacing: 1px
-  // text-shadow: 2px 2px rgba(0, 0, 0, 0.4)
+  @media screen and (max-width: 500px)
+    font-size: 10px
+    text-align: center
 
 
 #aboutMe 
@@ -136,6 +145,17 @@ html
       margin-left: 20px
 
 
+@media screen and (max-width: 500px)
+  #circle
+    width: 200px
+    height: 200px
+    margin: auto
+    margin-top: 100px
+    overflow: hidden
+    position: initial  
+
+
+
 #ME
   color: #ffffff
   font-size: 18px
@@ -143,12 +163,22 @@ html
   padding: 20px
   margin-top: 120px
   text-align: center
-  line-height: 1.8
+  line-height: 1.6
+  @media screen and (max-width: 500px)
+    color: #ffffff
+    font-size: 14px
+    letter-spacing: 1px
+    padding: 15px
+    margin-top: 100px
+    text-align: center
+    line-height: 1.4
       
 
 
 #aboutMe .container div div h3 
   color: $color-titledark
+  @media screen and (max-width: 500px)
+    font-size: 30px
   
 
 
@@ -157,6 +187,7 @@ html
   color: $color-titledark
   background-color: #c3c3c3
   overflow: hidden
+
   
   
   
@@ -213,7 +244,6 @@ footer
   height: 380px
   margin-bottom: 20px
   box-shadow: 0px 20px 50px #000
-  
   background: #0F2027
   background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027)
   background: linear-gradient(to right, #2C5364, #203A43, #0F2027)
@@ -223,6 +253,8 @@ footer
 
 #cards
   margin: 50px 0px 50px 0px
+  @media screen and (max-width: 500px)
+    margin: 20px 0px 20px 80px
   
   
 
@@ -294,6 +326,7 @@ footer
 
 .card:hover > .back 
   transform: perspective(600px) rotateY(0deg)
+
 
 
 /*# sourceMappingURL=styles.css.map */

@@ -5,60 +5,110 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    
     <script src="https://kit.fontawesome.com/6d94296c81.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Darker+Grotesque|Josefin+Sans:600|Rajdhani:600&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Darker+Grotesque|Josefin+Sans:600|Rajdhani:600&display=swap" rel="stylesheet">
+    <script type="text/javascript">
+        $(window).on('scroll', function (){
+            if($(window).scrollTop()){
+                $('#nav').addClass('black');
+            }
+            else
+            {
+                $('#nav').removeClass('black');
+            }
+        })
+    </script>
     <link rel="stylesheet" href="./assets/css/Styles.css">
 
     <title>EDDSON BLANCO</title>
 </head>
 
 <body>
-    <div id="nav" class="sidenav ">
-        <a class="" type="" id="btnNav" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false"><i class="far fa-caret-square-down fa-rotate-270"></i></a>
-        <a class="collapse multi-collapse" id="multiCollapse1" href="#aboutMe"><i class="fas fa-handshake"></i></a>
-        <a class="collapse multi-collapse" id="multiCollapse2" href="#work"> <i class="fas fa-code"></i> </a>
-        <a class="collapse multi-collapse" id="multiCollapse3" href="#tools"><i class="fas fa-tools"></i></a>
-        <a class="collapse multi-collapse" id="multiCollapse4" href="#footer"><i class="fas fa-id-card"></i></a>
-        <a class="collapse multi-collapse" id="multiCollapse4" href="#welcome"><i
-                class="far fa-caret-square-up"></i></a>
-    </div>
 
-    <div id="welcome" class="d-flex align-items-center justify-content-center">
-        <div class="" id="name">
-            <h1>EDDSON BLANCO </h1>
-            <H2>Full Stack Web Developer & Designer</H2>
 
+    <div class="container" id="welcome">
+
+        <div id="nav" class="sidenav ">
+            <div class="logo">
+                <img src="./assets/img/logo.png" alt="">
+            </div>
+            <ul>
+                <li><a class="active" href="home">HOME</a></li>
+                <li><a href="skill">SKILLS</a></li>
+                <li><a href="projects">PROJECTS</a></li>
+                <li><a href="education">EDUCATION</a></li>
+                <li><a href="">RESUME</a></li>
+            </ul>
         </div>
 
+        <div class="name-container ">
+            <div class="name">EDDSON <b>BLANCO</b> </div>
+            <h2 class="title">Full Stack Web Developer & Designer</h2>
+        </div>
 
-    </div>
-
-    <div id="aboutMe">
-        <div class="container ">
-            <div class="row text-center">
-                <div class="col-12 text-center mt-4">
-                    <h3>ABOUT ME</h3>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-12 col-lg-5 d-flex">
-                    <div id="circle"><img src="./assets/img/eddson.jpg" alt=""></div>
-                </div>
-                <div class="col-sm-12 col-lg-7 d-flex">
-                    <p  id="ME">
-                            Venezuela was my home. 
-                            I made the decision to come to the U.S. in 2015 due to the critical situation that has impacted my country, leaving behind my family, and the career I was pursuing in systems engineering. I started my new life without speaking a word of english but determined to succeed. In a few years, I was able to speak, write and read english and pursue goals that would have never been possible in my home country. One of my greatest discoveries was my passion for programming. I became eager to learn and took it into my own hands to teach myself, creating my first fully functional website for a local restaurant, utilizing html and css. From then on, I decided to pursue a career as a web developer and have been working endlessly towards expanding my skill set. 
-                            
-                    </p>
-                </div>
-            </div>
+        <div class="bio-container">
+            <h3>ABOUT ME</h3>
+            <p id="ME">
+                Venezuela was my home.
+                I made the decision to come to the U.S. in 2015 due to the critical situation that has impacted my
+                country, leaving behind my family, and the career I was pursuing in systems engineering. I started my
+                new life without speaking a word of english but determined to succeed. In a few years, I was able to
+                speak, write and read english and pursue goals that would have never been possible in my home country.
+                One of my greatest discoveries was my passion for programming. I became eager to learn and took it into
+                my own hands to teach myself, creating my first fully functional website for a local restaurant,
+                utilizing html and css. From then on, I decided to pursue a career as a web developer and have been
+                working endlessly towards expanding my skill set.
+            </p>
         </div>
     </div>
+    <div class="skills">
 
-    <div id="work">
+    </div>
+    <div class="offer">
+
+    </div>
+    <div class="projects">
+
+    </div>
+    <div class="education">
+            I made the decision to come to the U.S. in 2015 due to the critical situation that has impacted my
+            country, leaving behind my family, and the career I was pursuing in systems engineering. I started my
+            new life without speaking a word of english but determined to succeed. In a few years, I was able to
+            speak, write and read english and pursue goals that would have never been possible in my home country.
+            One of my greatest discoveries was my passion for programming. I became eager to learn and took it into
+            my own hands to teach myself, creating my first fully functional website for a local restaurant,
+            utilizing html and css. From then on, I decided to pursue a career as a web developer and have been
+            working endlessly towards expanding my skill set.
+            I made the decision to come to the U.S. in 2015 due to the critical situation that has impacted my
+                country, leaving behind my family, and the career I was pursuing in systems engineering. I started my
+                new life without speaking a word of english but determined to succeed. In a few years, I was able to
+                speak, write and read english and pursue goals that would have never been possible in my home country.
+                One of my greatest discoveries was my passion for programming. I became eager to learn and took it into
+                my own hands to teach myself, creating my first fully functional website for a local restaurant,
+                utilizing html and css. From then on, I decided to pursue a career as a web developer and have been
+                working endlessly towards expanding my skill set.
+                I made the decision to come to the U.S. in 2015 due to the critical situation that has impacted my
+                country, leaving behind my family, and the career I was pursuing in systems engineering. I started my
+                new life without speaking a word of english but determined to succeed. In a few years, I was able to
+                speak, write and read english and pursue goals that would have never been possible in my home country.
+                One of my greatest discoveries was my passion for programming. I became eager to learn and took it into
+                my own hands to teach myself, creating my first fully functional website for a local restaurant,
+                utilizing html and css. From then on, I decided to pursue a career as a web developer and have been
+                working endlessly towards expanding my skill set.
+                I made the decision to come to the U.S. in 2015 due to the critical situation that has impacted my
+                country, leaving behind my family, and the career I was pursuing in systems engineering. I started my
+                new life without speaking a word of english but determined to succeed. In a few years, I was able to
+                speak, write and read english and pursue goals that would have never been possible in my home country.
+                One of my greatest discoveries was my passion for programming. I became eager to learn and took it into
+                my own hands to teach myself, creating my first fully functional website for a local restaurant,
+                utilizing html and css. From then on, I decided to pursue a career as a web developer and have been
+                working endlessly towards expanding my skill set.
+    </div>
+
+
+    <!-- <div id="work">
         <div class="container ">
             <div class="row text-center">
                 <div class="col-12 text-center mt-4">
@@ -66,245 +116,182 @@
                 </div>
             </div>
             <div id="cards" class="row d-flex align-items-center justify-content-between">
-                <div  class="card middle">
+                <div class="card middle">
                     <div class="front">
                         <img src="./assets/img/lamas2.png">
                     </div>
                     <div class="back">
                         <div class="back-content middle">
-                            <a href="http://www.lamasrestaurant.com"> <h2>Lamas Restaurant</h2></a>
+                            <a href="http://www.lamasrestaurant.com">
+                                <h2>Lamas Restaurant</h2>
+                            </a>
                             <span>Created with</span>
                             <div class="sm">
                                 <a><i class="fab fa-html5"></i> html</a>
                                 <a><i class="fab fa-css3"></i> css3</a>
                                 <a><i class="fab fa-js"></i> javaScript</a>
-                                <a target="_blank" href="https://github.com/Eddsonblanco/lamas-restaurant"><i class="fab fa-github"></i> Github <- click </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card middle">
-                    <div class="front">
-                        <img src="https://images.unsplash.com/photo-1500835556837-99ac94a94552?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=80"
-                            alt="">
-                    </div>
-                    <div class="back">
-                        <div class="back-content middle">
-                            <a target="_blank" href="https://eddsonblanco.github.io/TRVL./" ><h2>Travel.</h2></a>
-                            <span>Created with</span>
-                            <div class="sm">
-                                <a><i class="fab fa-html5"></i> html</a>
-                                <a><i class="fab fa-css3"></i> css3</a>
-                                <a><i class="fab fa-js"></i> javaScript/ Jquery/ </a>
-                                <a>Bootstrap</a>
-                                <a target="_blank" href="https://github.com/Eddsonblanco/TRVL."><i
-                                        class="fab fa-github"></i> Github <- click </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card middle">
-                    <div class="front">
-                        <img src="./assets/img/CodingLife.png" alt="">
-                    </div>
-                    <div class="back">
-                        <div class="back-content middle">
-                            <a target="_blank" href="https://codinglifeucd.herokuapp.com/"> <h2>CodingLife ;</h2></a>
-                            <span>Created with</span>
-                            <div class="sm">
-                                <a><i class="fab fa-html5"></i> html</a>
-                                <a><i class="fab fa-css3"></i> css3</a>
-                                <a><i class="fab fa-js"></i> javaScript</a>
-                                <a><i class="fab fa-node-js">Nodejs</i></a>
-                                <a><i class="fas fa-database"></i>MySql</a>
-                                <a> Bootstrap</a>
-                                <a target="_blank" href="https://github.com/Eddsonblanco/ProjectTwo"><i
-                                        class="fab fa-github"></i> Github <- click </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card middle">
-                    <div class="front">
-                        <img src="./assets/img/train2.png" alt="">
-                    </div>
-                    <div class="back">
-                        <div class="back-content middle">
-                            <a target="_blank" href="https://eddsonblanco.github.io/TrainSchedule/"> <h2>Train Schedule</h2> </a>
-                            <span>Created with</span>
-                            <div class="sm">
-                                <a><i class="fab fa-html5"></i> html</a>
-                                <a><i class="fab fa-css3"></i> css3</a>
-                                <a><i class="fab fa-js"></i> javaScript /</a>
-                                <a> Bootstrap</a>
-                                <a target="_blank" href="https://github.com/Eddsonblanco/TrainSchedule"><i class="fab fa-github"></i> Github <- click</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card middle">
-                    <div class="front">
-                        <img src="./assets/img/scraper.png" alt="">
-                    </div>
-                    <div class="back">
-                        <div class="back-content middle">
-                            <a href="!#"><h2>Web-Scraper</h2></a>
-                            <span>Created with</span>
-                            <div class="sm">
-                                <a><i class="fab fa-html5"></i> html</a>
-                                <a><i class="fab fa-css3"></i> css3</a>
-                                <a><i class="fab fa-js"></i> javaScript/ express/ Nodejs /handlebars /cheerios/
-                                    Axios</a>
-                                <a><i class="fas fa-database"></i>Mongo</a>
-                                <a> Bootstrap</a>
-                                <a target="_blank" href="https://github.com/Eddsonblanco/web-scraper"><i class="fab fa-github"></i> Github <- click </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card middle">
-                    <div class="front">
-                        <img src="./assets/img/triviagame.png" alt="">
-                    </div>
-                    <div class="back">
-                        <div class="back-content middle">
-                            <h2>Trivia Game</h2>
-                            <span>Created with</span>
-                            <div class="sm">
-                                <a><i class="fab fa-html5"></i> html</a>
-                                <a><i class="fab fa-css3"></i> css3</a>
-                                <a><i class="fab fa-js"></i> javaScript</a>
-                                <a> Bootstrap</a>
-                                <!-- <a><i class="fab fa-node-js">Nodejs</i></a>
+                                <a target="_blank" href="https://github.com/Eddsonblanco/lamas-restaurant"><i
+                                        class="fab fa-github"></i> Github <- click </a> </div> </div> </div> </div> <div
+                                        class="card middle">
+                                        <div class="front">
+                                            <img src="https://images.unsplash.com/photo-1500835556837-99ac94a94552?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=80"
+                                                alt="">
+                                        </div>
+                                        <div class="back">
+                                            <div class="back-content middle">
+                                                <a target="_blank" href="https://eddsonblanco.github.io/TRVL./">
+                                                    <h2>Travel.</h2>
+                                                </a>
+                                                <span>Created with</span>
+                                                <div class="sm">
+                                                    <a><i class="fab fa-html5"></i> html</a>
+                                                    <a><i class="fab fa-css3"></i> css3</a>
+                                                    <a><i class="fab fa-js"></i> javaScript/ Jquery/ </a>
+                                                    <a>Bootstrap</a>
+                                                    <a target="_blank" href="https://github.com/Eddsonblanco/TRVL."><i
+                                                            class="fab fa-github"></i> Github <- click </a> </div>
+                                                            </div> </div> </div> <div class="card middle">
+                                                            <div class="front">
+                                                                <img src="./assets/img/CodingLife.png" alt="">
+                                                            </div>
+                                                            <div class="back">
+                                                                <div class="back-content middle">
+                                                                    <a target="_blank"
+                                                                        href="https://codinglifeucd.herokuapp.com/">
+                                                                        <h2>CodingLife ;</h2>
+                                                                    </a>
+                                                                    <span>Created with</span>
+                                                                    <div class="sm">
+                                                                        <a><i class="fab fa-html5"></i> html</a>
+                                                                        <a><i class="fab fa-css3"></i> css3</a>
+                                                                        <a><i class="fab fa-js"></i> javaScript</a>
+                                                                        <a><i class="fab fa-node-js">Nodejs</i></a>
+                                                                        <a><i class="fas fa-database"></i>MySql</a>
+                                                                        <a> Bootstrap</a>
+                                                                        <a target="_blank"
+                                                                            href="https://github.com/Eddsonblanco/ProjectTwo"><i
+                                                                                class="fab fa-github"></i> Github <-
+                                                                                click </a> </div> </div> </div> </div>
+                                                                                <div class="card middle">
+                                                                                <div class="front">
+                                                                                    <img src="./assets/img/train2.png"
+                                                                                        alt="">
+                                                                                </div>
+                                                                                <div class="back">
+                                                                                    <div class="back-content middle">
+                                                                                        <a target="_blank"
+                                                                                            href="https://eddsonblanco.github.io/TrainSchedule/">
+                                                                                            <h2>Train Schedule</h2>
+                                                                                        </a>
+                                                                                        <span>Created with</span>
+                                                                                        <div class="sm">
+                                                                                            <a><i
+                                                                                                    class="fab fa-html5"></i>
+                                                                                                html</a>
+                                                                                            <a><i
+                                                                                                    class="fab fa-css3"></i>
+                                                                                                css3</a>
+                                                                                            <a><i class="fab fa-js"></i>
+                                                                                                javaScript /</a>
+                                                                                            <a> Bootstrap</a>
+                                                                                            <a target="_blank"
+                                                                                                href="https://github.com/Eddsonblanco/TrainSchedule"><i
+                                                                                                    class="fab fa-github"></i>
+                                                                                                Github <- click</a>
+                                                                                                    </div> </div> </div>
+                                                                                                    </div> <div
+                                                                                                    class="card middle">
+                                                                                                    <div class="front">
+                                                                                                        <img src="./assets/img/scraper.png"
+                                                                                                            alt="">
+                                                                                                    </div>
+                                                                                                    <div class="back">
+                                                                                                        <div
+                                                                                                            class="back-content middle">
+                                                                                                            <a
+                                                                                                                href="!#">
+                                                                                                                <h2>Web-Scraper
+                                                                                                                </h2>
+                                                                                                            </a>
+                                                                                                            <span>Created
+                                                                                                                with</span>
+                                                                                                            <div
+                                                                                                                class="sm">
+                                                                                                                <a><i
+                                                                                                                        class="fab fa-html5"></i>
+                                                                                                                    html</a>
+                                                                                                                <a><i
+                                                                                                                        class="fab fa-css3"></i>
+                                                                                                                    css3</a>
+                                                                                                                <a><i
+                                                                                                                        class="fab fa-js"></i>
+                                                                                                                    javaScript/
+                                                                                                                    express/
+                                                                                                                    Nodejs
+                                                                                                                    /handlebars
+                                                                                                                    /cheerios/
+                                                                                                                    Axios</a>
+                                                                                                                <a><i
+                                                                                                                        class="fas fa-database"></i>Mongo</a>
+                                                                                                                <a>
+                                                                                                                    Bootstrap</a>
+                                                                                                                <a target="_blank"
+                                                                                                                    href="https://github.com/Eddsonblanco/web-scraper"><i
+                                                                                                                        class="fab fa-github"></i>
+                                                                                                                    Github
+                                                                                                                    <- click
+                                                                                                                        </a>
+                                                                                                                        </div>
+                                                                                                                        </div>
+                                                                                                                        </div>
+                                                                                                                        </div>
+                                                                                                                        <div
+                                                                                                                        class="card middle">
+                                                                                                                        <div
+                                                                                                                            class="front">
+                                                                                                                            <img src="./assets/img/triviagame.png"
+                                                                                                                                alt="">
+                                                                                                                        </div>
+                                                                                                                        <div
+                                                                                                                            class="back">
+                                                                                                                            <div
+                                                                                                                                class="back-content middle">
+                                                                                                                                <h2>Trivia
+                                                                                                                                    Game
+                                                                                                                                </h2>
+                                                                                                                                <span>Created
+                                                                                                                                    with</span>
+                                                                                                                                <div
+                                                                                                                                    class="sm">
+                                                                                                                                    <a><i
+                                                                                                                                            class="fab fa-html5"></i>
+                                                                                                                                        html</a>
+                                                                                                                                    <a><i
+                                                                                                                                            class="fab fa-css3"></i>
+                                                                                                                                        css3</a>
+                                                                                                                                    <a><i
+                                                                                                                                            class="fab fa-js"></i>
+                                                                                                                                        javaScript</a>
+                                                                                                                                    <a>
+                                                                                                                                        Bootstrap</a>
+                                                                                                                                    <!-- <a><i class="fab fa-node-js">Nodejs</i></a>
                                 <a><i class="fas fa-database"></i>MySql</a> -->
-                                <a target="_blank" href="https://github.com/Eddsonblanco/Trivia-Game"><i
-                                        class="fab fa-github"></i> Github <- click </a>
-                                <a target="_blank" href="https://eddsonblanco.github.io/Trivia-Game/"><i
-                                        class="fa fa-globe"></i></i>Browser </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div id="tools">
-        <div class="container ">
-            <div class="row text-center">
-                <div class="col-12 text-center mt-4">
-                    <h3>TOOLS</h3>
-                </div>
-            </div>
-            <div class="row d-flex  justify-content-center">
-                <div class="col-m-6 tech d-flex flex-column align-items-start  ">
-                    <a><i class="fab fa-html5"></i> Html</a>
-                    <a><i class="fab fa-css3"></i> Css3</a>
-                    <a><i class="fab fa-js"></i> JavaScript</a>
-                    <a><i class="fab fa-node-js"></i> Node.Js</a>
-                    <a><i class="fab fa-react"></i> React.Js</a>
-                </div>
-                <div class="col-m-6 tech d-flex flex-column  align-items-start">
-                    <a> Express.js</a>
-                    <a><i class="fab fas fa-database"></i> MongoDB</a>
-                    <a><i class="fab fas fa-database"></i> MySql</a>
-                    <a><i class="fab fa-bootstrap"></i> Bootstrap</a>
-                    <a><i class="fab fa-git"></i> Git</a>
-                </div>
-
-
-            </div>
-        </div>
-    </div>
-
-    <footer id="footer" class="page-footer font-small mdb-color lighten-3 pt-4">
-
-        <!-- Footer Links -->
-        <div class="container text-center text-md-left">
-
-            <div class="row">
-
-                <div class="col-md-4 col-lg-3 mr-auto my-md-4 my-0 mt-4 mb-1">
-
-                    <h5 class="font-weight-bold text-uppercase mb-4">Footer Content</h5>
-
-
-                </div>
-
-                <hr class="clearfix w-100 d-md-none">
-
-                <div class="col-md-2 col-lg-2 mx-auto my-md-4 my-0 mt-4 mb-1">
-
-                    <h5 class="font-weight-bold text-uppercase mb-4">About</h5>
-
-                    <ul class="list-unstyled">
-                        <li>
-                            <p>
-                                <a href="#work">PROJECTS</a>
-                            </p>
-                        </li>
-                        <li>
-                            <p>
-                                <a href="#aboutMe">ABOUT ME</a>
-                            </p>
-                        </li>
-                    </ul>
-
-                </div>
-                <!-- Grid column -->
-
-                <hr class="clearfix w-100 d-md-none">
-
-                <!-- Grid column -->
-                <div class="col-md-4 col-lg-3 mx-auto my-md-4 my-0 mt-4 mb-1">
-
-                    <!-- Contact details -->
-                    <h5 class="font-weight-bold text-uppercase mb-4">Address</h5>
-
-                    <ul class="list-unstyled">
-                        <li>
-                            <p>
-                                <i class="fas fa-home mr-3"></i> Sacramento, CA 95820, US</p>
-                        </li>
-                        <li>
-                            <p>
-                                <i class="fas fa-envelope mr-3"></i> eddsonrbr@gmail.com</p>
-                        </li>
-
-                    </ul>
-
-                </div>
-
-                <hr class="clearfix w-100 d-md-none">
-                <div class="col-md-2 col-lg-2 text-center mx-auto my-4 social-media">
-
-                    <h5 class="font-weight-bold text-uppercase mb-4">Follow Me</h5>
-
-                    <a href="https://github.com/Eddsonblanco"><i class="fab fa-github"></i></a>
-
-                    <a href="https://www.linkedin.com/in/eddson-blanco-94a919168/"><i id="linkedin"
-                            class="fab fa-linkedin-in"></i></a>
-
-                </div>
-
-            </div>
-
-        </div>
-        <div class="footer-copyright text-center py-3">© 2019 Copyright:
-            <a href="https://eddsonblanco.com"></a> Eddson Blanco</a>
-        </div>
-    </footer>
-
-    <!-- ------------- js scripts------------------ -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
+                                                                                        
+                                                                    
+<!-- ------------- js scripts------------------ -->
+<script
+src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+crossorigin="anonymous"></script>
+<script
+src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+crossorigin="anonymous"></script>
+<script
+src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+crossorigin="anonymous"></script>
 </body>
 
 </html>
+

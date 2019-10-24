@@ -2,215 +2,201 @@ $color-title: #D8BEB8
 $color-titledark: #292121
 $color-primary: #4d4d4e
   
-  
-* 
-  margin: 0
+*
   padding: 0
-
+  margin: 0
 html
   scroll-behavior: smooth
- 
-
-
-.sidenav 
-  height: 100%
-  width: 130px
-  position: fixed
-  z-index: 1
-  top: 0
-  left: 0
-  overflow-x: hidden
-  padding-top: 20px
-  #btnNav
-    
-    border-radius: 50%
-  
-  
-
-
-.sidenav a 
-  padding: 6px 8px 6px 16px
-  text-decoration: none
-  font-size: 30px
-  color: $color-primary
-  display: block
-  margin: 10px 0 10px 30px
-  
-
-
-.sidenav a:hover 
-  color: #818181
-
-
-.sidenav #btnNav i 
-  color: #fff
-  background-color: #009FAA
-  padding: 10px
-  font-size: 35px
-  border-radius: 50%
-  -webkit-transition: -webkit-transform 0.6s ease-in-out
-  -ms-transition: -ms-transform 0.6s ease-in-out
-  transition: transform 0.6s ease-in-out
-
-
-.sidenav #btnNav i:hover 
-  color: #818181
-  -webkit-transform: rotate(360deg)
-  -moz-transform: rotate(360deg)
-  -ms-transform: rotate(360deg)
-  -o-transform: rotate(360deg)
-  transform: rotate(360deg)
-
-
-#aboutMe .container div div h3,
-#work .container div div h3,
-#tools .container div div h3,
-#contact .container div div h3 
-  font-size: 40px
-  font-family: 'Josefin Sans', sans-serif
-  letter-spacing: 5px
-  margin-top: 20px
-  @media screen and (max-width: 500px)
-    font-size: 30px
-    font-family: 'Josefin Sans', sans-serif
-    letter-spacing: 4px
-    margin-top: 15px
-
 
 
 #welcome 
-  background: url("https://images.unsplash.com/photo-1490598000245-075175152d25?ixlib=rb-1.2.1&auto=format&fit=crop&w=1700&q=80") no-repeat 
-  min-height: 950px
-  
+  // background: url(https://images.unsplash.ecom/photo-1490598000245-075175152d25?ixlib=rb-1.2.1&auto=format&fit=crop&w=1700&q=80) no-repeat 
 
+ 
 
-#welcome #name 
-  
-  padding: 10px
-  margin-bottom: 200px
-
-
-#welcome #name h1 
-  margin-bottom: 0px
-  font-size: 80px
-  padding: 0px
-  color: $color-titledark
-  letter-spacing: 10px
-  text-shadow: 3px 3px rgba(0, 0, 0, 0.3)
-  // font-family: 'Darker Grotesque', sans-serif
-  font-family: 'Josefin Sans', sans-serif
-  // font-family: 'Rajdhani', sans-serif
-  @media screen and (max-width: 500px)
-    font-size: 50px
+.container
+  width: 100%
+  display: grid
+  grid-template-columns: repeat(6, 1fr)
+  grid-template-rows: 150px 400px 300px
+  grid-gap: 1em
+  grid-template-areas:  ". . . . . ." ". name name name name ." ". bio bio bio bio ."
+  .name-container
+    grid-area: name
     text-align: center
-
-#welcome #name h2 
-  font-size: 20px
-  padding: 0px
-  color: #292121
-  letter-spacing: 1px
-  @media screen and (max-width: 500px)
-    font-size: 10px
-    text-align: center
-
-
-#aboutMe 
-  min-height: 950px
-  background: #232526
-  background: -webkit-linear-gradient(to right, #414345, #232526)
-  background: linear-gradient(to right, #414345, #232526)
-  .container
-    .row
-      div
-        h3
+    .name
+      font-size: 80px
+      color: $color-titledark
+      letter-spacing: 8px
+      text-shadow: 2px 2px rgba(0, 0, 0, 0.3)
+      font-family: 'Josefin Sans', sans-serif
+      margin-top: 10px
+      b 
+        background: $color-titledark
+        color:#FFF
+        padding-top: 20px
+        padding-right: 0.1em
+        padding-left: 0.2em
+        
+    .title
+      font-size: 20px
+      margin: 0
+      padding: 0
+      color: #292121
+      letter-spacing: 1px
+      text-align: center
+  .bio-container
+    grid-area: bio
+  .sidenav 
+    grid-area: navbar
+    position: fixed
+    transition: 0.3s
+    width: 100%
+    box-sizing: border-box
+    .logo
+      float: left
+      align-items: center
+      grid-area: logo
+      img
+        width: 80px
+        transition: 0.3s
+        margin-left: 5em
+      
+    ul
+      float: right
+      display: flex
+      li
+        list-style: none
+        a
+          line-height: 100px
+          letter-spacing: 0.2em
+          color: $color-titledark
+          padding: 5px 20px
+          text-decoration: none
+          text-transform: uppercase
+          transition: 0.3s
+        a.active,
+        a:hover
+          background: #f00
           color: #fff
+    
+      
+  
 
-
-#circle 
-    width: 400px
-    height: 400px
-    background: white
-    -moz-border-radius: 50%
-    -webkit-border-radius: 50%
-    border-radius: 50%
-    margin-top: 170px
-    overflow: hidden
-    position: absolute
-    z-index: 4
-    -webkit-box-shadow: 7px 8px 15px -2px rgba(255,255,255,0.55)
-    box-shadow: 7px 8px 15px -2px rgba(255,255,255,0.55)
-    img
-      width: 100%
-      transform: rotate(-20deg)
-      margin-left: 20px
-
-
-@media screen and (max-width: 500px)
-  #circle
-    width: 200px
-    height: 200px
-    margin: auto
-    margin-top: 100px
-    overflow: hidden
-    position: initial  
+  .black
+    background: rgba(0,0,0,.8)
+    height: 80px
+    padding: 10px 50px
+    .logo
+      img
+        width: 60px
+    ul 
+      li 
+        a    
+          color: #ffffff
+          line-height: 50px
+          letter-spacing: 0.1em
 
 
 
-#ME
-  color: #ffffff
-  font-size: 18px
-  letter-spacing: 2px
-  padding: 20px
-  margin-top: 120px
-  text-align: center
-  line-height: 1.6
-  @media screen and (max-width: 500px)
-    color: #ffffff
-    font-size: 14px
-    letter-spacing: 1px
-    padding: 15px
-    margin-top: 100px
-    text-align: center
-    line-height: 1.4
+
+
+// #aboutMe 
+//   min-height: 950px
+//   background: #232526
+//   background: -webkit-linear-gradient(to right, #414345, #232526)
+//   background: linear-gradient(to right, #414345, #232526)
+//   .container
+//     .row
+//       div
+//         h3
+//           color: #fff
+
+
+// #circle 
+//     width: 400px
+//     height: 400px
+//     background: white
+//     -moz-border-radius: 50%
+//     -webkit-border-radius: 50%
+//     border-radius: 50%
+//     margin-top: 170px
+//     overflow: hidden
+//     position: absolute
+//     z-index: 4
+//     -webkit-box-shadow: 7px 8px 15px -2px rgba(255,255,255,0.55)
+//     box-shadow: 7px 8px 15px -2px rgba(255,255,255,0.55)
+//     img
+//       width: 100%
+//       transform: rotate(-20deg)
+//       margin-left: 20px
+
+
+// @media screen and (max-width: 500px)
+//   #circle
+//     width: 200px
+//     height: 200px
+//     margin: auto
+//     margin-top: 100px
+//     overflow: hidden
+//     position: initial  
+
+
+
+// #ME
+//   color: #000
+//   font-size: 16px
+//   letter-spacing: 2px
+//   margin-top: 120px
+//   text-align: center
+//   line-height: 1.6
+//   @media screen and (max-width: 500px)
+//     color: #ffffff
+//     font-size: 14px
+//     letter-spacing: 1px
+//     padding: 15px
+//     margin-top: 100px
+//     text-align: center
+//     line-height: 1.4
       
 
 
-#aboutMe .container div div h3 
-  color: $color-titledark
-  @media screen and (max-width: 500px)
-    font-size: 30px
+// #aboutMe .container div div h3 
+//   color: $color-titledark
+//   @media screen and (max-width: 500px)
+//     font-size: 30px
   
 
 
-#work 
-  min-height: 950px
-  color: $color-titledark
-  background-color: #c3c3c3
-  overflow: hidden
+// #work 
+//   min-height: 950px
+//   color: $color-titledark
+//   background-color: #c3c3c3
+//   overflow: hidden
 
   
   
   
 
 
-#tools 
-  color: #fff
-  min-height: 950px
-  background: #232526
-  background: -webkit-linear-gradient(to right, #414345, #232526)
-  background: linear-gradient(to right, #414340, #232526)
-  .container 
-    .row
-      .tech
-        margin: 100px
+// #tools 
+//   color: #fff
+//   min-height: 950px
+//   background: #232526
+//   background: -webkit-linear-gradient(to right, #414345, #232526)
+//   background: linear-gradient(to right, #414340, #232526)
+//   .container 
+//     .row
+//       .tech
+//         margin: 100px
         
-        a 
-          font-size: 20px
-          color: #fff
-          padding: 10px
-          i
-            font-size: 40px
-            margin-right: 15px
+//         a 
+//           font-size: 20px
+//           color: #fff
+//           padding: 10px
+//           i
+//             font-size: 40px
+//             margin-right: 15px
         
         
 footer

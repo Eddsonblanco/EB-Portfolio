@@ -1,0 +1,98 @@
+.skills-container {
+  background-color: #1f1e1e;
+  color: #fff;
+  height: 400px;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  grid-template-areas:
+    "title title title title title title title title"
+    ". frontend . skills skills skills skills ."
+    ". backend . BEskill BEskill BEskill BEskill ."
+    ". tools . Tskills Tskills Tskills Tskills .";
+
+  .skill-title {
+    color: #fff;
+    grid-area: title;
+    font-size: 1.8rem;
+    letter-spacing: 0.8rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    display: flex;
+    justify-self: center;
+    align-self: center;
+    
+  }
+  .frontend {
+    grid-area: frontend;
+    font-size: 1.2rem;
+    display: flex;
+    letter-spacing: 0.8rem;
+    text-transform: uppercase;
+  }
+  .skills {
+    grid-area: skills;
+    display: flex;
+    flex-wrap: wrap;
+    
+ 
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+     
+      li {
+        font-family: sans-serif;
+        color: rgb(224, 215, 215);
+        letter-spacing: 0.2rem;
+        font-size: 1rem;
+        margin: 0.3rem 1rem;
+      }
+    }
+  }
+  .backend {
+    grid-area: backend;
+    font-size: 1.2rem;
+    display: flex;
+    letter-spacing: 0.8rem;
+    text-transform: uppercase;
+  }
+  .BEskills {
+    grid-area: BEskill ;
+    display: flex;
+    flex-wrap: wrap;
+    
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      
+      li {
+        letter-spacing: 0.1rem;
+        font-size: 1rem;
+        margin: 0.3rem 0.6rem;
+      }
+    }
+  }
+  .tools {
+    grid-area: tools;
+    font-size: 1.2rem;
+    display: flex;
+    
+    letter-spacing: 0.8rem;
+    text-transform: uppercase;
+  }
+  .Tskills{
+    grid-area: Tskills;
+    display: flex;
+    flex-wrap: wrap;
+    
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+     
+      li {
+        letter-spacing: 0.1rem;
+        font-size: 1rem;
+        margin: 0.3rem 0.6rem;
+      }
+  }
+}}

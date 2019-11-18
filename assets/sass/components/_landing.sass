@@ -1,0 +1,333 @@
+$color-title: #d8beb8
+$color-titledark: #292121
+$color-primary: #4d4d4e
+$color-hl: #f00
+
+
+
+#welcome 
+  background: url(../img/bg-blue.png) no-repeat center center fixed
+  -webkit-background-size: cover
+  -moz-background-size: cover
+  -o-background-size: cover
+  background-size: cover
+
+ 
+
+#welcome
+  width: 100%
+  display: grid
+  grid-template-columns: repeat(6, 1fr)
+  grid-template-rows: 150px 400px 400px
+  grid-gap: 1em
+  grid-template-areas:  ". . . . . ." ". name name name name ." ". . . . . ."
+  .name-container
+    grid-area: name
+    display: flex
+    flex-wrap: wrap
+    justify-self: center
+    align-items: center
+    .name
+      font-size: 80px
+      color: scolor-titledark
+      letter-spacing: 8px
+      text-shadow: 2px 2px rgba(0, 0, 0, 0.3)
+      font-family: 'Josefin Sans', sans-serif
+      margin-top: 10px
+      
+      b 
+        background: #1f1e1e
+        color:#FFF
+        padding-top: 20px
+        padding-right: 0.1em
+        padding-left: 0.2em
+        transition: 0.5s
+      b.active
+        background: none
+        color: $color-titledark
+        padding-top: 20px
+        padding-right: 0.1em
+        padding-left: 0.2em
+    .title
+      font-size: 20px
+      margin: 0
+      padding: 0
+      color: #292121
+      letter-spacing: 1px
+      display: flex
+      align-self: flex-start
+      margin-left: 1em
+
+  .sidenav 
+    grid-area: navbar
+    position: fixed
+    transition: 0.5s
+    width: 100%
+    box-sizing: border-box
+    .logo
+      float: left
+      margin-top: 0.8em
+      grid-area: logo
+      img
+        width: 80px
+        transition: 0.5s
+        margin-left: 5em
+        
+      
+    ul
+      float: right
+      display: flex
+      li
+        list-style: none
+        a
+          line-height: 100px
+          letter-spacing: 0.2em
+          color: $color-titledark
+          padding: 5px 20px
+          text-decoration: none
+          text-transform: uppercase
+          transition: 0.2s
+        a.active,
+        a:hover
+          background: #f00
+          color: #fff
+    
+      
+  
+
+  .black
+    background: rgba(0,0,0,.9)
+    height: 90px
+    padding: 10px 50px
+    display: flex
+    justify-content: space-between
+    align-items: center
+    .logo
+      img
+        width: 65px
+        margin-left: 5em
+        
+    ul 
+      li 
+        a    
+          color: #ffffff
+          line-height: 50px
+          letter-spacing: 0.1em
+
+    
+
+
+
+
+
+// #aboutMe 
+//   min-height: 950px
+//   background: #232526
+//   background: -webkit-linear-gradient(to right, #414345, #232526)
+//   background: linear-gradient(to right, #414345, #232526)
+//   .container
+//     .row
+//       div
+//         h3
+//           color: #fff
+
+
+// #circle 
+//     width: 400px
+//     height: 400px
+//     background: white
+//     -moz-border-radius: 50%
+//     -webkit-border-radius: 50%
+//     border-radius: 50%
+//     margin-top: 170px
+//     overflow: hidden
+//     position: absolute
+//     z-index: 4
+//     -webkit-box-shadow: 7px 8px 15px -2px rgba(255,255,255,0.55)
+//     box-shadow: 7px 8px 15px -2px rgba(255,255,255,0.55)
+//     img
+//       width: 100%
+//       transform: rotate(-20deg)
+//       margin-left: 20px
+
+
+// @media screen and (max-width: 500px)
+//   #circle
+//     width: 200px
+//     height: 200px
+//     margin: auto
+//     margin-top: 100px
+//     overflow: hidden
+//     position: initial  
+
+
+
+// #ME
+//   color: #000
+//   font-size: 16px
+//   letter-spacing: 2px
+//   margin-top: 120px
+//   text-align: center
+//   line-height: 1.6
+//   @media screen and (max-width: 500px)
+//     color: #ffffff
+//     font-size: 14px
+//     letter-spacing: 1px
+//     padding: 15px
+//     margin-top: 100px
+//     text-align: center
+//     line-height: 1.4
+      
+
+
+// #aboutMe .container div div h3 
+//   color: $color-titledark
+//   @media screen and (max-width: 500px)
+//     font-size: 30px
+  
+
+
+// #work 
+//   min-height: 950px
+//   color: $color-titledark
+//   background-color: #c3c3c3
+//   overflow: hidden
+
+  
+  
+  
+
+
+// #tools 
+//   color: #fff
+//   min-height: 950px
+//   background: #232526
+//   background: -webkit-linear-gradient(to right, #414345, #232526)
+//   background: linear-gradient(to right, #414340, #232526)
+//   .container 
+//     .row
+//       .tech
+//         margin: 100px
+        
+//         a 
+//           font-size: 20px
+//           color: #fff
+//           padding: 10px
+//           i
+//             font-size: 40px
+//             margin-right: 15px
+        
+        
+footer
+  background-color: #c3c3c3
+  .container
+    .row
+      .social-media
+        a 
+          i
+            padding: 5px
+            font-size: 40px
+            margin-top: 15px
+          i#linkedin
+            background-color: #007bb5
+            color: white
+          i.fa-github
+            background-color: #fff
+            color: #000  
+
+        
+          
+
+
+
+
+
+/* ----------------cards-------------- */
+.card 
+  cursor: arrow
+  width: 230px
+  height: 380px
+  margin-bottom: 20px
+  box-shadow: 0px 20px 50px #000
+  background: #0F2027
+  background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027)
+  background: linear-gradient(to right, #2C5364, #203A43, #0F2027)
+
+  
+
+
+#cards
+  margin: 50px 0px 50px 0px
+  @media screen and (max-width: 500px)
+    margin: 20px 0px 20px 80px
+  
+  
+
+
+.front, .back 
+  width: 100%
+  height: 100%
+  overflow: hidden
+  backface-visibility: hidden
+  position: absolute
+  transition: transform  0.2s linear 
+
+
+.front img 
+  height: 100%
+  color: #c3c3c3
+
+
+.front 
+  transform: perspective(600px) rotateY(0deg)
+
+
+.back 
+  background: #EAE6E5
+  background: -webkit-linear-gradient(to right, #001510, #00bf8f)
+  background: linear-gradient(to right, #001510, #00bf8f)
+  transform: perspective(600px) rotateY(180deg)
+  .back-content 
+    color: #ffffff
+    margin-left: 20px
+    margin-top: 10px
+    a  
+      text-decoration: none
+      color: #fff
+      font-family: 'Josefin Sans', sans-serif
+      margin-top: 5px
+      &:hover
+        color: #009FAA 
+  
+
+  
+
+
+
+.sm 
+  margin: 15px 0
+  height: 100%
+  
+  
+
+
+.sm a 
+  color: $color-title
+  font-size: 15px
+  transition: 0.5s
+  border-radius: 50%
+  display: block
+  color: #fff
+  &:hover
+    color: #009FAA
+  i
+    margin: 5px
+  
+
+
+.card:hover > .front 
+  transform: perspective(600px) rotateY(-180deg)
+
+
+.card:hover > .back 
+  transform: perspective(600px) rotateY(0deg)

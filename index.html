@@ -3,7 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no,">
+
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     
@@ -13,10 +14,15 @@
         $(window).on('scroll', function (){
             if($(window).scrollTop()){
                 $('#nav').addClass('black');
+                $('#logo').attr("src",'./assets/img/logo EB .png');
+                $('#lastName').addClass('active')
             }
             else
             {
+                $('#logo').attr("src",'./assets/img/logo.png');
                 $('#nav').removeClass('black');
+                $('#lastName').removeClass('active')
+                
             }
         })
     </script>
@@ -32,79 +38,172 @@
 
         <div id="nav" class="sidenav ">
             <div class="logo">
-                <img src="./assets/img/logo.png" alt="">
+                <img id="logo" src="./assets/img/logo.png" alt="EB LOGO">
             </div>
             <ul>
-                <li><a class="active" href="home">HOME</a></li>
-                <li><a href="skill">SKILLS</a></li>
-                <li><a href="projects">PROJECTS</a></li>
-                <li><a href="education">EDUCATION</a></li>
-                <li><a href="">RESUME</a></li>
+                <li><a class="active" href="/">HOME</a></li>
+                <li><a href="!#">SKILLS</a></li>
+                <li><a href="!#">PROJECTS</a></li>
+                <li><a href="!#">EDUCATION</a></li>
+                <li><a target="_blank" href="./assets/resume/Eddson Blanco RESUME.pdf">RESUME</a></li>
             </ul>
         </div>
 
         <div class="name-container ">
-            <div class="name">EDDSON <b>BLANCO</b> </div>
-            <h2 class="title">Full Stack Web Developer & Designer</h2>
+            <div class="name ">EDDSON <b class="" id="lastName">BLANCO</b>
+                <h2 class="title">Full Stack Web Developer & Designer</h2> </div>
         </div>
 
-        <div class="bio-container">
-            <h3>ABOUT ME</h3>
-            <p id="ME">
-                Venezuela was my home.
-                I made the decision to come to the U.S. in 2015 due to the critical situation that has impacted my
-                country, leaving behind my family, and the career I was pursuing in systems engineering. I started my
-                new life without speaking a word of english but determined to succeed. In a few years, I was able to
-                speak, write and read english and pursue goals that would have never been possible in my home country.
-                One of my greatest discoveries was my passion for programming. I became eager to learn and took it into
-                my own hands to teach myself, creating my first fully functional website for a local restaurant,
-                utilizing html and css. From then on, I decided to pursue a career as a web developer and have been
-                working endlessly towards expanding my skill set.
-            </p>
+         
+    </div>
+    <div class="banner">
+        <div class="slider">
+                <p>I design and create users interfaces<br>
+                Fully responsive design<br>
+                intuitive and frendly apps</p>
+        </div>
+        
+        <div class="bannerImg">
+                
+
         </div>
     </div>
-    <div class="skills">
-
+    <div class="skills-container">
+            <div class="skill-title">
+                <h2>Skills</h2>
+            </div>
+    
+            <div class="frontend">Frontend</div>
+            <div class="skills">
+                <ul>
+                    <li>JavaScript</li>
+                    <li>React.js</li>
+                    <li>Css/Saas</li>
+                    <li>Html5</li>
+                    <li>jQuery</li>
+                    <li>handlebars</li>
+                    <li>Bootstrap</li>
+                    
+                </ul>
+            </div>
+            <div class="backend">Backend</div>
+            <div class="BEskills">
+                    <ul>
+                        <li>MySQL</li>
+                        <li>MongoDB</li>
+                        <li>Node.js</li>
+                        <li>Express</li>
+                    </ul>
+                </div>
+            <div class="tools">Tools</div>
+            <div class="Tskills">
+                    <ul>
+                        <li>Git</li>
+                        <li>Adobe XD</li>
+                    </ul>
+                </div>
+            
     </div>
-    <div class="offer">
 
-    </div>
-    <div class="projects">
+    <div class="projects_container">
+        <h2 class="projects_title">projects</h2>
 
-    </div>
-    <div class="education">
-            I made the decision to come to the U.S. in 2015 due to the critical situation that has impacted my
-            country, leaving behind my family, and the career I was pursuing in systems engineering. I started my
-            new life without speaking a word of english but determined to succeed. In a few years, I was able to
-            speak, write and read english and pursue goals that would have never been possible in my home country.
-            One of my greatest discoveries was my passion for programming. I became eager to learn and took it into
-            my own hands to teach myself, creating my first fully functional website for a local restaurant,
-            utilizing html and css. From then on, I decided to pursue a career as a web developer and have been
-            working endlessly towards expanding my skill set.
-            I made the decision to come to the U.S. in 2015 due to the critical situation that has impacted my
-                country, leaving behind my family, and the career I was pursuing in systems engineering. I started my
-                new life without speaking a word of english but determined to succeed. In a few years, I was able to
-                speak, write and read english and pursue goals that would have never been possible in my home country.
-                One of my greatest discoveries was my passion for programming. I became eager to learn and took it into
-                my own hands to teach myself, creating my first fully functional website for a local restaurant,
-                utilizing html and css. From then on, I decided to pursue a career as a web developer and have been
-                working endlessly towards expanding my skill set.
-                I made the decision to come to the U.S. in 2015 due to the critical situation that has impacted my
-                country, leaving behind my family, and the career I was pursuing in systems engineering. I started my
-                new life without speaking a word of english but determined to succeed. In a few years, I was able to
-                speak, write and read english and pursue goals that would have never been possible in my home country.
-                One of my greatest discoveries was my passion for programming. I became eager to learn and took it into
-                my own hands to teach myself, creating my first fully functional website for a local restaurant,
-                utilizing html and css. From then on, I decided to pursue a career as a web developer and have been
-                working endlessly towards expanding my skill set.
-                I made the decision to come to the U.S. in 2015 due to the critical situation that has impacted my
-                country, leaving behind my family, and the career I was pursuing in systems engineering. I started my
-                new life without speaking a word of english but determined to succeed. In a few years, I was able to
-                speak, write and read english and pursue goals that would have never been possible in my home country.
-                One of my greatest discoveries was my passion for programming. I became eager to learn and took it into
-                my own hands to teach myself, creating my first fully functional website for a local restaurant,
-                utilizing html and css. From then on, I decided to pursue a career as a web developer and have been
-                working endlessly towards expanding my skill set.
+
+        <div id="MYN" class="project">
+                <h3 class="title">My Neighborhood</h3>
+                <div class="img">
+                        <img src="./assets/img/mnh.png" alt="">
+                </div>
+                <div class="description"> <p>We set out to make a mobile app that focuses on the news, events or services within your community. Giving people that comfort and safety everyone desires when moving into a new neighborhood is what drove us to making this app.</p></div>
+                <div class="tech">
+                    
+                    <li class="tech_li">MongoDB</li>
+                    <li class="tech_li">Express</li>
+                    <li class="tech_li">React</li>
+                    <li class="tech_li">Bootstrap</li>
+                    <li class="tech_li">Cheerio</li>
+                    <li class="tech_li">Sass</li>
+                    <li class="tech_li">Node</li>
+                    
+
+                </div>
+                <div class="links">
+                    <a target="_blank" class="project_link" href="https://github.com/Eddsonblanco/myNeighborhood">Web</a>
+                    <a target="_blank" class="project_link" href="https://shielded-tor-66455.herokuapp.com/">Code</a>
+                </div>
+        </div>
+        <div id="CL" class="project"> 
+                <h3 class="title">CodingLife</h3>
+                <div class="img">
+                        <img src="./assets/img/mnh.png" alt="">
+                </div>
+                <div class="description"> <p>We set out to make a mobile app that focuses on the news, events or services within your community. Giving people that comfort and safety everyone desires when moving into a new neighborhood is what drove us to making this app.</p></div>
+                <div class="tech">
+                    
+                    <li class="tech_li">MongoDB</li>
+                    <li class="tech_li">Express</li>
+                    <li class="tech_li">React</li>
+                    <li class="tech_li">Bootstrap</li>
+                    <li class="tech_li">Cheerio</li>
+                    <li class="tech_li">Sass</li>
+                    <li class="tech_li">Node</li>
+                    
+
+                </div>
+                <div class="links">
+                    <a target="_blank" class="project_link" href="https://github.com/Eddsonblanco/myNeighborhood">Web</a>
+                    <a target="_blank" class="project_link" href="https://shielded-tor-66455.herokuapp.com/">Code</a>
+                </div>
+        </div>
+        <div id="travel" class="project">
+            <h3 class="title">My Neighborhood</h3>
+            <div class="img">
+                    <img src="./assets/img/mnh.png" alt="">
+            </div>
+            <div class="description"> <p>We set out to make a mobile app that focuses on the news, events or services within your community. Giving people that comfort and safety everyone desires when moving into a new neighborhood is what drove us to making this app.</p></div>
+            <div class="tech">
+                
+                <li class="tech_li">MongoDB</li>
+                <li class="tech_li">Express</li>
+                <li class="tech_li">React</li>
+                <li class="tech_li">Bootstrap</li>
+                <li class="tech_li">Cheerio</li>
+                <li class="tech_li">Sass</li>
+                <li class="tech_li">Node</li>
+                
+
+            </div>
+            <div class="links">
+                <a target="_blank" class="project_link" href="https://github.com/Eddsonblanco/myNeighborhood">Web</a>
+                <a target="_blank" class="project_link" href="https://shielded-tor-66455.herokuapp.com/">Code</a>
+            </div>
+        </div>
+        <div id="scrapping" class="project"> 
+            <h3 class="title">CodingLife</h3>
+            <div class="img">
+                    <img src="./assets/img/mnh.png" alt="">
+            </div>
+            <div class="description"> <p>We set out to make a mobile app that focuses on the news, events or services within your community. Giving people that comfort and safety everyone desires when moving into a new neighborhood is what drove us to making this app.</p></div>
+            <div class="tech">
+                
+                <li class="tech_li">MongoDB</li>
+                <li class="tech_li">Express</li>
+                <li class="tech_li">React</li>
+                <li class="tech_li">Bootstrap</li>
+                <li class="tech_li">Cheerio</li>
+                <li class="tech_li">Sass</li>
+                <li class="tech_li">Node</li>
+                
+
+            </div>
+            <div class="links">
+                <a target="_blank" class="project_link" href="https://github.com/Eddsonblanco/myNeighborhood">Web</a>
+                <a target="_blank" class="project_link" href="https://shielded-tor-66455.herokuapp.com/">Code</a>
+            </div>
+        </div>
+        
+
+
     </div>
 
 

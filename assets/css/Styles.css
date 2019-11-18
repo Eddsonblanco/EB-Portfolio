@@ -1,97 +1,110 @@
-* {
-  padding: 0;
-  margin: 0;
+#welcome {
+  background: url(../img/bg-blue.png) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
-.container {
+#welcome {
   width: 100%;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: 150px 400px 300px;
+  grid-template-rows: 150px 400px 400px;
   grid-gap: 1em;
-  grid-template-areas: ". . . . . ." ". name name name name ." ". bio bio bio bio .";
+  grid-template-areas: ". . . . . ." ". name name name name ." ". . . . . .";
 }
-.container .name-container {
+#welcome .name-container {
   grid-area: name;
-  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-self: center;
+  align-items: center;
 }
-.container .name-container .name {
+#welcome .name-container .name {
   font-size: 80px;
-  color: #292121;
+  color: scolor-titledark;
   letter-spacing: 8px;
   text-shadow: 2px 2px rgba(0, 0, 0, 0.3);
   font-family: "Josefin Sans", sans-serif;
   margin-top: 10px;
 }
-.container .name-container .name b {
-  background: #292121;
+#welcome .name-container .name b {
+  background: #1f1e1e;
   color: #FFF;
   padding-top: 20px;
   padding-right: 0.1em;
   padding-left: 0.2em;
+  transition: 0.5s;
 }
-.container .name-container .title {
+#welcome .name-container .name b.active {
+  background: none;
+  color: #292121;
+  padding-top: 20px;
+  padding-right: 0.1em;
+  padding-left: 0.2em;
+}
+#welcome .name-container .title {
   font-size: 20px;
   margin: 0;
   padding: 0;
   color: #292121;
   letter-spacing: 1px;
-  text-align: center;
+  display: flex;
+  align-self: flex-start;
+  margin-left: 1em;
 }
-.container .bio-container {
-  grid-area: bio;
-}
-.container .sidenav {
+#welcome .sidenav {
   grid-area: navbar;
   position: fixed;
-  transition: 0.3s;
+  transition: 0.5s;
   width: 100%;
   box-sizing: border-box;
 }
-.container .sidenav .logo {
+#welcome .sidenav .logo {
   float: left;
-  align-items: center;
+  margin-top: 0.8em;
   grid-area: logo;
 }
-.container .sidenav .logo img {
+#welcome .sidenav .logo img {
   width: 80px;
-  transition: 0.3s;
+  transition: 0.5s;
   margin-left: 5em;
 }
-.container .sidenav ul {
+#welcome .sidenav ul {
   float: right;
   display: flex;
 }
-.container .sidenav ul li {
+#welcome .sidenav ul li {
   list-style: none;
 }
-.container .sidenav ul li a {
+#welcome .sidenav ul li a {
   line-height: 100px;
   letter-spacing: 0.2em;
   color: #292121;
   padding: 5px 20px;
   text-decoration: none;
   text-transform: uppercase;
-  transition: 0.3s;
+  transition: 0.2s;
 }
-.container .sidenav ul li a.active,
-.container .sidenav ul li a:hover {
+#welcome .sidenav ul li a.active,
+#welcome .sidenav ul li a:hover {
   background: #f00;
   color: #fff;
 }
-.container .black {
-  background: rgba(0, 0, 0, 0.8);
-  height: 80px;
+#welcome .black {
+  background: rgba(0, 0, 0, 0.9);
+  height: 90px;
   padding: 10px 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-.container .black .logo img {
-  width: 60px;
+#welcome .black .logo img {
+  width: 65px;
+  margin-left: 5em;
 }
-.container .black ul li a {
+#welcome .black ul li a {
   color: #ffffff;
   line-height: 50px;
   letter-spacing: 0.1em;
@@ -180,7 +193,7 @@ footer .container .row .social-media a i.fa-github {
 }
 
 .sm a {
-  color: #D8BEB8;
+  color: #d8beb8;
   font-size: 15px;
   transition: 0.5s;
   border-radius: 50%;
@@ -202,7 +215,226 @@ footer .container .row .social-media a i.fa-github {
   transform: perspective(600px) rotateY(0deg);
 }
 
-/*# sourceMappingURL=styles.css.map */
-/*# sourceMappingURL=styles.sass.map */
+* {
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.skills-container {
+  background-color: #1f1e1e;
+  color: #fff;
+  height: 400px;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  grid-template-areas: "title title title title title title title title" ". frontend . skills skills skills skills ." ". backend . BEskill BEskill BEskill BEskill ." ". tools . Tskills Tskills Tskills Tskills .";
+}
+.skills-container .skill-title {
+  color: #fff;
+  grid-area: title;
+  font-size: 1.8rem;
+  letter-spacing: 0.8rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  display: flex;
+  justify-self: center;
+  align-self: center;
+}
+.skills-container .frontend {
+  grid-area: frontend;
+  font-size: 1.2rem;
+  display: flex;
+  letter-spacing: 0.8rem;
+  text-transform: uppercase;
+}
+.skills-container .skills {
+  grid-area: skills;
+  display: flex;
+  flex-wrap: wrap;
+}
+.skills-container .skills ul {
+  display: flex;
+  flex-wrap: wrap;
+}
+.skills-container .skills ul li {
+  font-family: sans-serif;
+  color: #e0d7d7;
+  letter-spacing: 0.2rem;
+  font-size: 1rem;
+  margin: 0.3rem 1rem;
+}
+.skills-container .backend {
+  grid-area: backend;
+  font-size: 1.2rem;
+  display: flex;
+  letter-spacing: 0.8rem;
+  text-transform: uppercase;
+}
+.skills-container .BEskills {
+  grid-area: BEskill;
+  display: flex;
+  flex-wrap: wrap;
+}
+.skills-container .BEskills ul {
+  display: flex;
+  flex-wrap: wrap;
+}
+.skills-container .BEskills ul li {
+  letter-spacing: 0.1rem;
+  font-size: 1rem;
+  margin: 0.3rem 0.6rem;
+}
+.skills-container .tools {
+  grid-area: tools;
+  font-size: 1.2rem;
+  display: flex;
+  letter-spacing: 0.8rem;
+  text-transform: uppercase;
+}
+.skills-container .Tskills {
+  grid-area: Tskills;
+  display: flex;
+  flex-wrap: wrap;
+}
+.skills-container .Tskills ul {
+  display: flex;
+  flex-wrap: wrap;
+}
+.skills-container .Tskills ul li {
+  letter-spacing: 0.1rem;
+  font-size: 1rem;
+  margin: 0.3rem 0.6rem;
+}
+
+.banner {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-areas: "slider slider img img";
+  height: 500px;
+}
+.banner .slider {
+  grid-area: slider;
+  display: flex;
+  color: black;
+  justify-content: center;
+  align-items: center;
+}
+.banner .slider p {
+  font-size: 1.5rem;
+  line-height: 40px;
+  text-transform: uppercase;
+  font-family: sans-serif;
+}
+.banner .bannerImg {
+  grid-area: img;
+  background: url("../img/responsive_design490.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.projects_container .projects_title {
+  font-size: 1.8rem;
+  letter-spacing: 0.8rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  text-align: center;
+}
+.projects_container .project {
+  color: #fff;
+  height: 500px;
+  display: grid;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  gap: 10px;
+  grid-template-areas: ". img img img img img title title  . ." ". img img img img img description description  description ." ". img img img img img description description description ." ". img img img img img tech tech tech ." ". img img img img img links links links  .";
+}
+.projects_container .project .title {
+  grid-area: title;
+  align-self: center;
+}
+.projects_container .project .img {
+  grid-area: img;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.projects_container .project .img img {
+  height: 20em;
+}
+.projects_container .project .description {
+  grid-area: description;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.projects_container .project .tech {
+  grid-area: tech;
+  display: flex;
+  flex-wrap: wrap;
+}
+.projects_container .project .tech .tech_li {
+  margin: 5px;
+  padding: 5px;
+  list-style: none;
+  font-size: 1rem;
+}
+.projects_container .project .links {
+  grid-area: links;
+}
+.projects_container .project .links a:link, .projects_container .project .links a:visited {
+  margin: 0.5rem;
+  padding: 0.6rem 1rem 0.6rem 1rem;
+  border: 2px solid #fff;
+  border-radius: 5px;
+  color: #fff;
+  text-decoration: none;
+}
+.projects_container .project .links a:hover, .projects_container .project .links a:active {
+  background-color: white;
+  border: 2px solid red;
+  color: red;
+}
+
+#MYN {
+  background: #78496b;
+  background: -moz-linear-gradient(top, #78496b 0%, #c146a1 41%, #db36a4 76%, #cb60b3 100%);
+  background: -webkit-gradient(left top, left bottom, color-stop(0%, #78496b), color-stop(41%, #c146a1), color-stop(76%, #db36a4), color-stop(100%, #cb60b3));
+  background: -webkit-linear-gradient(top, #78496b 0%, #c146a1 41%, #db36a4 76%, #cb60b3 100%);
+  background: -o-linear-gradient(top, #78496b 0%, #c146a1 41%, #db36a4 76%, #cb60b3 100%);
+  background: -ms-linear-gradient(top, #78496b 0%, #c146a1 41%, #db36a4 76%, #cb60b3 100%);
+  background: linear-gradient(to bottom, #78496b 0%, #c146a1 41%, #db36a4 76%, #cb60b3 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#78496b", endColorstr="#cb60b3", GradientType=0 );
+}
+
+#CL {
+  background: #29b8e5;
+  background: -moz-linear-gradient(top, #29b8e5 0%, #b3dced 100%);
+  background: -webkit-gradient(left top, left bottom, color-stop(0%, #29b8e5), color-stop(100%, #b3dced));
+  background: -webkit-linear-gradient(top, #29b8e5 0%, #b3dced 100%);
+  background: -o-linear-gradient(top, #29b8e5 0%, #b3dced 100%);
+  background: -ms-linear-gradient(top, #29b8e5 0%, #b3dced 100%);
+  background: linear-gradient(to bottom, #29b8e5 0%, #b3dced 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#29b8e5", endColorstr="#b3dced", GradientType=0 );
+}
+
+#travel {
+  background: linear-gradient(to bottom, #8f94fb, #ef93ec);
+}
+
+#scrapping {
+  background: #fceabb;
+  background: -moz-linear-gradient(top, #fceabb 0%, #fccd4d 0%, #f8b500 51%, #fbdf93 100%);
+  background: -webkit-gradient(left top, left bottom, color-stop(0%, #fceabb), color-stop(0%, #fccd4d), color-stop(51%, #f8b500), color-stop(100%, #fbdf93));
+  background: -webkit-linear-gradient(top, #fceabb 0%, #fccd4d 0%, #f8b500 51%, #fbdf93 100%);
+  background: -o-linear-gradient(top, #fceabb 0%, #fccd4d 0%, #f8b500 51%, #fbdf93 100%);
+  background: -ms-linear-gradient(top, #fceabb 0%, #fccd4d 0%, #f8b500 51%, #fbdf93 100%);
+  background: linear-gradient(to bottom, #fceabb 0%, #fccd4d 0%, #f8b500 51%, #fbdf93 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#fceabb", endColorstr="#fbdf93", GradientType=0 );
+}
 
 /*# sourceMappingURL=styles.css.map */

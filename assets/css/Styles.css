@@ -10,7 +10,7 @@
   width: 100%;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: 150px 400px 400px;
+  grid-template-rows: 150px 650px 150px;
   grid-gap: 1em;
   grid-template-areas: ". . . . . ." ". name name name name ." ". . . . . .";
 }
@@ -21,34 +21,45 @@
   justify-self: center;
   align-items: center;
 }
-#welcome .name-container .name {
+#welcome .name-container div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  flex-direction: columns;
+}
+#welcome .name-container div .name {
+  font-weight: 600;
   font-size: 80px;
-  color: scolor-titledark;
+  color: #292121;
   letter-spacing: 8px;
-  text-shadow: 2px 2px rgba(0, 0, 0, 0.3);
-  font-family: "Josefin Sans", sans-serif;
   margin-top: 10px;
 }
-#welcome .name-container .name b {
-  background: #1f1e1e;
-  color: #FFF;
-  padding-top: 20px;
+#welcome .name-container div .lastName {
+  font-weight: 600;
+  margin-left: 20px;
+  font-size: 80px;
+  color: #fff;
+  transition: 0.5s;
+  background: #292121;
+  padding-top: 10px;
   padding-right: 0.1em;
   padding-left: 0.2em;
-  transition: 0.5s;
 }
-#welcome .name-container .name b.active {
+#welcome .name-container div .lastName.active {
   background: none;
+  margin-left: 20px;
   color: #292121;
-  padding-top: 20px;
+  padding-top: 10px;
   padding-right: 0.1em;
   padding-left: 0.2em;
 }
 #welcome .name-container .title {
   font-size: 20px;
+  font-weight: 300;
   margin: 0;
   padding: 0;
-  color: #292121;
+  color: #fff;
   letter-spacing: 1px;
   display: flex;
   align-self: flex-start;
@@ -80,7 +91,7 @@
 }
 #welcome .sidenav ul li a {
   line-height: 100px;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.1em;
   color: #292121;
   padding: 5px 20px;
   text-decoration: none;
@@ -127,94 +138,6 @@ footer .container .row .social-media a i.fa-github {
   color: #000;
 }
 
-/* ----------------cards-------------- */
-.card {
-  cursor: arrow;
-  width: 230px;
-  height: 380px;
-  margin-bottom: 20px;
-  box-shadow: 0px 20px 50px #000;
-  background: #0F2027;
-  background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);
-  background: linear-gradient(to right, #2C5364, #203A43, #0F2027);
-}
-
-#cards {
-  margin: 50px 0px 50px 0px;
-}
-@media screen and (max-width: 500px) {
-  #cards {
-    margin: 20px 0px 20px 80px;
-  }
-}
-
-.front, .back {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  backface-visibility: hidden;
-  position: absolute;
-  transition: transform 0.2s linear;
-}
-
-.front img {
-  height: 100%;
-  color: #c3c3c3;
-}
-
-.front {
-  transform: perspective(600px) rotateY(0deg);
-}
-
-.back {
-  background: #EAE6E5;
-  background: -webkit-linear-gradient(to right, #001510, #00bf8f);
-  background: linear-gradient(to right, #001510, #00bf8f);
-  transform: perspective(600px) rotateY(180deg);
-}
-.back .back-content {
-  color: #ffffff;
-  margin-left: 20px;
-  margin-top: 10px;
-}
-.back .back-content a {
-  text-decoration: none;
-  color: #fff;
-  font-family: "Josefin Sans", sans-serif;
-  margin-top: 5px;
-}
-.back .back-content a:hover {
-  color: #009FAA;
-}
-
-.sm {
-  margin: 15px 0;
-  height: 100%;
-}
-
-.sm a {
-  color: #d8beb8;
-  font-size: 15px;
-  transition: 0.5s;
-  border-radius: 50%;
-  display: block;
-  color: #fff;
-}
-.sm a:hover {
-  color: #009FAA;
-}
-.sm a i {
-  margin: 5px;
-}
-
-.card:hover > .front {
-  transform: perspective(600px) rotateY(-180deg);
-}
-
-.card:hover > .back {
-  transform: perspective(600px) rotateY(0deg);
-}
-
 * {
   padding: 0;
   margin: 0;
@@ -225,24 +148,22 @@ html {
 }
 
 .skills-container {
-  background-color: #1f1e1e;
-  color: #fff;
-  height: 400px;
+  background: black;
+  color: #cecece;
+  height: 500px;
   display: grid;
   grid-template-columns: repeat(8, 1fr);
-  grid-template-rows: repeat(4, 1fr);
-  grid-template-areas: "title title title title title title title title" ". frontend . skills skills skills skills ." ". backend . BEskill BEskill BEskill BEskill ." ". tools . Tskills Tskills Tskills Tskills .";
+  grid-template-rows: repeat(5, 1fr);
+  grid-template-areas: ". . . . . . . ." ". title title title title title title ." ". frontend . skills skills skills skills ." ". backend . BEskill BEskill BEskill BEskill ." ". tools . Tskills Tskills Tskills Tskills .";
 }
 .skills-container .skill-title {
-  color: #fff;
   grid-area: title;
   font-size: 1.8rem;
   letter-spacing: 0.8rem;
-  font-weight: 300;
+  font-weight: 300px;
   text-transform: uppercase;
   display: flex;
   justify-self: center;
-  align-self: center;
 }
 .skills-container .frontend {
   grid-area: frontend;
@@ -261,8 +182,8 @@ html {
   flex-wrap: wrap;
 }
 .skills-container .skills ul li {
-  font-family: sans-serif;
-  color: #e0d7d7;
+  list-style: none;
+  color: #cecece;
   letter-spacing: 0.2rem;
   font-size: 1rem;
   margin: 0.3rem 1rem;
@@ -284,9 +205,11 @@ html {
   flex-wrap: wrap;
 }
 .skills-container .BEskills ul li {
-  letter-spacing: 0.1rem;
+  list-style: none;
+  color: #cecece;
+  letter-spacing: 0.2rem;
   font-size: 1rem;
-  margin: 0.3rem 0.6rem;
+  margin: 0.3rem 1rem;
 }
 .skills-container .tools {
   grid-area: tools;
@@ -305,29 +228,27 @@ html {
   flex-wrap: wrap;
 }
 .skills-container .Tskills ul li {
-  letter-spacing: 0.1rem;
+  list-style: none;
+  letter-spacing: 0.2rem;
   font-size: 1rem;
-  margin: 0.3rem 0.6rem;
+  margin: 0.3rem 1rem;
 }
 
 .banner {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-areas: "slider slider img img";
-  height: 500px;
+  height: 400px;
 }
 .banner .slider {
+  padding: 20px;
+  margin: 20px;
   grid-area: slider;
   display: flex;
   color: black;
   justify-content: center;
   align-items: center;
-}
-.banner .slider p {
-  font-size: 1.5rem;
-  line-height: 40px;
-  text-transform: uppercase;
-  font-family: sans-serif;
+  font-size: 1rem;
 }
 .banner .bannerImg {
   grid-area: img;
@@ -388,11 +309,15 @@ html {
 }
 .projects_container .project .links a:link, .projects_container .project .links a:visited {
   margin: 0.5rem;
-  padding: 0.6rem 1rem 0.6rem 1rem;
   border: 2px solid #fff;
   border-radius: 5px;
   color: #fff;
   text-decoration: none;
+  line-height: 100px;
+  letter-spacing: 0.2em;
+  padding: 5px 20px;
+  text-transform: uppercase;
+  transition: 0.2s;
 }
 .projects_container .project .links a:hover, .projects_container .project .links a:active {
   background-color: white;
@@ -401,40 +326,53 @@ html {
 }
 
 #MYN {
-  background: #78496b;
-  background: -moz-linear-gradient(top, #78496b 0%, #c146a1 41%, #db36a4 76%, #cb60b3 100%);
-  background: -webkit-gradient(left top, left bottom, color-stop(0%, #78496b), color-stop(41%, #c146a1), color-stop(76%, #db36a4), color-stop(100%, #cb60b3));
-  background: -webkit-linear-gradient(top, #78496b 0%, #c146a1 41%, #db36a4 76%, #cb60b3 100%);
-  background: -o-linear-gradient(top, #78496b 0%, #c146a1 41%, #db36a4 76%, #cb60b3 100%);
-  background: -ms-linear-gradient(top, #78496b 0%, #c146a1 41%, #db36a4 76%, #cb60b3 100%);
-  background: linear-gradient(to bottom, #78496b 0%, #c146a1 41%, #db36a4 76%, #cb60b3 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#78496b", endColorstr="#cb60b3", GradientType=0 );
+  background: #215f00;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #e4e4d9, #215f00);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #e4e4d9, #215f00);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 #CL {
-  background: #29b8e5;
-  background: -moz-linear-gradient(top, #29b8e5 0%, #b3dced 100%);
-  background: -webkit-gradient(left top, left bottom, color-stop(0%, #29b8e5), color-stop(100%, #b3dced));
-  background: -webkit-linear-gradient(top, #29b8e5 0%, #b3dced 100%);
-  background: -o-linear-gradient(top, #29b8e5 0%, #b3dced 100%);
-  background: -ms-linear-gradient(top, #29b8e5 0%, #b3dced 100%);
-  background: linear-gradient(to bottom, #29b8e5 0%, #b3dced 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#29b8e5", endColorstr="#b3dced", GradientType=0 );
+  background: #5D4157;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #A8CABA, #5D4157);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #A8CABA, #5D4157);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 #travel {
-  background: linear-gradient(to bottom, #8f94fb, #ef93ec);
+  background: #606c88;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #3f4c6b, #606c88);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #3f4c6b, #606c88);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 #scrapping {
-  background: #fceabb;
-  background: -moz-linear-gradient(top, #fceabb 0%, #fccd4d 0%, #f8b500 51%, #fbdf93 100%);
-  background: -webkit-gradient(left top, left bottom, color-stop(0%, #fceabb), color-stop(0%, #fccd4d), color-stop(51%, #f8b500), color-stop(100%, #fbdf93));
-  background: -webkit-linear-gradient(top, #fceabb 0%, #fccd4d 0%, #f8b500 51%, #fbdf93 100%);
-  background: -o-linear-gradient(top, #fceabb 0%, #fccd4d 0%, #f8b500 51%, #fbdf93 100%);
-  background: -ms-linear-gradient(top, #fceabb 0%, #fccd4d 0%, #f8b500 51%, #fbdf93 100%);
-  background: linear-gradient(to bottom, #fceabb 0%, #fccd4d 0%, #f8b500 51%, #fbdf93 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#fceabb", endColorstr="#fbdf93", GradientType=0 );
+  background: #000000;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #e74c3c, #000000);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #e74c3c, #000000);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+footer {
+  background-color: #000;
+  color: #e6e1e1;
+}
+footer .container ul li p a {
+  text-decoration: none;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Montserrat", sans-serif;
 }
 
 /*# sourceMappingURL=styles.css.map */

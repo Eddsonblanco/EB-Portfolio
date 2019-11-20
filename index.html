@@ -4,63 +4,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no,">
-
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    
     <script src="https://kit.fontawesome.com/6d94296c81.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Darker+Grotesque|Josefin+Sans:600|Rajdhani:600&display=swap" rel="stylesheet">
-    <script type="text/javascript">
-        $(window).on('scroll', function (){
-            if($(window).scrollTop()){
-                $('#nav').addClass('black');
-                $('#logo').attr("src",'./assets/img/logo EB .png');
-                $('#lastName').addClass('active')
-            }
-            else
-            {
-                $('#logo').attr("src",'./assets/img/logo.png');
-                $('#nav').removeClass('black');
-                $('#lastName').removeClass('active')
-                
-            }
-        })
-    </script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,500,600,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/Styles.css">
 
     <title>EDDSON BLANCO</title>
 </head>
 
 <body>
-
-
-    <div class="container" id="welcome">
+    <div class="container2" id="welcome">
 
         <div id="nav" class="sidenav ">
             <div class="logo">
                 <img id="logo" src="./assets/img/logo.png" alt="EB LOGO">
             </div>
             <ul>
-                <li><a class="active" href="/">HOME</a></li>
-                <li><a href="!#">SKILLS</a></li>
-                <li><a href="!#">PROJECTS</a></li>
-                <li><a href="!#">EDUCATION</a></li>
+                <li><a href="#">HOME</a></li>
+                <li><a href="#skill">SKILLS</a></li>
+                <li><a href="#projects">PROJECTS</a></li>
+                <li><a href="#footer">GET IN TOUCH</a></li>
                 <li><a target="_blank" href="./assets/resume/Eddson Blanco RESUME.pdf">RESUME</a></li>
             </ul>
         </div>
 
         <div class="name-container ">
-            <div class="name ">EDDSON <b class="" id="lastName">BLANCO</b>
-                <h2 class="title">Full Stack Web Developer & Designer</h2> </div>
+            <div>
+                <div class="name">
+                        <p class="name"> EDDSON</p>
+                        <p class="lastName" id="lastName">BLANCO</p><br>
+                </div>
+                <h2 class="title">Full Stack Web Developer & Designer</h2>
+            </div>
         </div>
 
          
     </div>
+    
     <div class="banner">
         <div class="slider">
-                <p>I design and create users interfaces<br>
-                Fully responsive design<br>
-                intuitive and frendly apps</p>
+            FAST <br><br>fast load times and lag free interaction. <br><br>
+            RESPONSIVE<br><br> responsive layouts will work on any device.<br><br>
+            INTUITIVE<br><br> strong preference for easy to use, intuitive UX/UI.<br><br>
+            DYNAMIC <br><br>websites don't have to be static.<br><br>
         </div>
         
         <div class="bannerImg">
@@ -68,11 +56,8 @@
 
         </div>
     </div>
-    <div class="skills-container">
-            <div class="skill-title">
-                <h2>Skills</h2>
-            </div>
-    
+    <div id="skill" class="skills-container">
+            <div class="skill-title">Skills</div>
             <div class="frontend">Frontend</div>
             <div class="skills">
                 <ul>
@@ -105,10 +90,7 @@
             
     </div>
 
-    <div class="projects_container">
-        <h2 class="projects_title">projects</h2>
-
-
+    <div id="projects" class="projects_container">
         <div id="MYN" class="project">
                 <h3 class="title">My Neighborhood</h3>
                 <div class="img">
@@ -128,77 +110,78 @@
 
                 </div>
                 <div class="links">
-                    <a target="_blank" class="project_link" href="https://github.com/Eddsonblanco/myNeighborhood">Web</a>
-                    <a target="_blank" class="project_link" href="https://shielded-tor-66455.herokuapp.com/">Code</a>
+                    <a target="_blank" class="project_link" href="https://shielded-tor-66455.herokuapp.com/">Web</a>
+                    <a target="_blank" class="project_link" href="https://github.com/Eddsonblanco/myNeighborhood">Code</a>
                 </div>
         </div>
         <div id="CL" class="project"> 
                 <h3 class="title">CodingLife</h3>
                 <div class="img">
-                        <img src="./assets/img/mnh.png" alt="">
+                        <img src="./assets/img/CL.png" alt="">
                 </div>
-                <div class="description"> <p>We set out to make a mobile app that focuses on the news, events or services within your community. Giving people that comfort and safety everyone desires when moving into a new neighborhood is what drove us to making this app.</p></div>
+                <div class="description"> <p>A website that allows people to post and reply to each other about coding or other topics. In other words, a tech forum with a focus on developers.
+
+                    Our goal with this website was to create an online forum that would cover the CRUD criteria effectively.</p></div>
                 <div class="tech">
                     
-                    <li class="tech_li">MongoDB</li>
+                    <li class="tech_li">MySQL</li>
                     <li class="tech_li">Express</li>
-                    <li class="tech_li">React</li>
+                    <li class="tech_li">Sass</li>
                     <li class="tech_li">Bootstrap</li>
                     <li class="tech_li">Cheerio</li>
-                    <li class="tech_li">Sass</li>
-                    <li class="tech_li">Node</li>
+                    <li class="tech_li">JQuery</li>
+                    <li class="tech_li">Sequelize</li>
+                    <li class="tech_li">Handlebars</li>
                     
 
                 </div>
                 <div class="links">
-                    <a target="_blank" class="project_link" href="https://github.com/Eddsonblanco/myNeighborhood">Web</a>
-                    <a target="_blank" class="project_link" href="https://shielded-tor-66455.herokuapp.com/">Code</a>
+                    <a target="_blank" class="project_link" href="https://github.com/Eddsonblanco/CodingLife-Project2">Web</a>
+                    <a target="_blank" class="project_link" href="https://codinglifeucd.herokuapp.com/">Code</a>
                 </div>
         </div>
         <div id="travel" class="project">
             <h3 class="title">My Neighborhood</h3>
             <div class="img">
-                    <img src="./assets/img/mnh.png" alt="">
+                    <img src="./assets/img/TRVL.png" alt="">
             </div>
-            <div class="description"> <p>We set out to make a mobile app that focuses on the news, events or services within your community. Giving people that comfort and safety everyone desires when moving into a new neighborhood is what drove us to making this app.</p></div>
+            <div class="description"> <p>Our goal was to create a one-stop-shop travel website. Usually with travel sites, you have your flight/hotel/rental car in one spot but if you want to look at high quality images or weather information or things to do you need to look at a few different site. We wanted people to be able to search a variety of destinations with high quality photos, weather information, and a map with some information specific to the city. We also wanted users to have the option to compare previous searches so we added an element where you can click on your previous search and it is reloaded onto the page.</p></div>
             <div class="tech">
                 
-                <li class="tech_li">MongoDB</li>
-                <li class="tech_li">Express</li>
-                <li class="tech_li">React</li>
+                <li class="tech_li">HTML5</li>
+                <li class="tech_li">JavaScript</li>
+                <li class="tech_li">jQuery</li>
                 <li class="tech_li">Bootstrap</li>
-                <li class="tech_li">Cheerio</li>
-                <li class="tech_li">Sass</li>
-                <li class="tech_li">Node</li>
+                <li class="tech_li">CSS3</li>
+                
                 
 
             </div>
             <div class="links">
-                <a target="_blank" class="project_link" href="https://github.com/Eddsonblanco/myNeighborhood">Web</a>
-                <a target="_blank" class="project_link" href="https://shielded-tor-66455.herokuapp.com/">Code</a>
+                <a target="_blank" class="project_link" href="https://eddsonblanco.github.io/TRVL./">Web</a>
+                <a target="_blank" class="project_link" href="https://github.com/Eddsonblanco/TRVL.">Code</a>
             </div>
         </div>
         <div id="scrapping" class="project"> 
-            <h3 class="title">CodingLife</h3>
+            <h3 class="title">Scrapping the News</h3>
             <div class="img">
-                    <img src="./assets/img/mnh.png" alt="">
+                    <img src="./assets/img/SCRAPPING.png" alt="">
             </div>
-            <div class="description"> <p>We set out to make a mobile app that focuses on the news, events or services within your community. Giving people that comfort and safety everyone desires when moving into a new neighborhood is what drove us to making this app.</p></div>
+            <div class="description"> <p>App that lets users view and leave comments on the latest news. But you're not going to actually write any articles; instead, you'll flex your Mongoose and Cheerio muscles to scrape news from another site.</p></div>
             <div class="tech">
                 
                 <li class="tech_li">MongoDB</li>
-                <li class="tech_li">Express</li>
-                <li class="tech_li">React</li>
-                <li class="tech_li">Bootstrap</li>
+                <li class="tech_li">Express-Handelbars</li>
+                <li class="tech_li">Mongoose</li>
                 <li class="tech_li">Cheerio</li>
-                <li class="tech_li">Sass</li>
-                <li class="tech_li">Node</li>
+                <li class="tech_li">Axios</li>
+                <li class="tech_li">Css3</li>
                 
 
             </div>
             <div class="links">
-                <a target="_blank" class="project_link" href="https://github.com/Eddsonblanco/myNeighborhood">Web</a>
-                <a target="_blank" class="project_link" href="https://shielded-tor-66455.herokuapp.com/">Code</a>
+                <a target="_blank" class="project_link" href="https://blooming-forest-23700.herokuapp.com/articles">Web</a>
+                <a target="_blank" class="project_link" href="https://github.com/Eddsonblanco/web-scraper">Code</a>
             </div>
         </div>
         
@@ -206,190 +189,64 @@
 
     </div>
 
+    <footer id="footer" class="page-footer font-small mdb-color lighten-3 pt-4">
 
-    <!-- <div id="work">
-        <div class="container ">
-            <div class="row text-center">
-                <div class="col-12 text-center mt-4">
-                    <h3>EXPERIMENTS</h3>
+        <!-- Footer Links -->
+        <div class="container text-center text-md-left">
+
+            <div class="row">
+                <hr class="clearfix w-100 d-md-none">
+
+                <!-- Grid column -->
+                <div class="col-md-4 col-lg-3 mx-auto my-md-4 my-0 mt-4 mb-1">
+
+                    <!-- Contact details -->
+                    <h5 class="font-weight-bold text-uppercase mb-4">Address</h5>
+
+                    <ul class="list-unstyled">
+                        <li>
+                            <p>
+                                <i class="fas fa-home mr-3"></i> Sacramento, CA 95820, US</p>
+                        </li>
+                        <li>
+                            <p>
+                                <i class="fas fa-envelope mr-3"></i> eddsonrbr@gmail.com</p>
+                        </li>
+
+                    </ul>
+
                 </div>
+
+                <hr class="clearfix w-100 d-md-none">
+                <div class="col-md-2 col-lg-2 text-center mx-auto my-4 social-media">
+
+                    <h5 class="font-weight-bold text-uppercase mb-4">Follow Me</h5>
+
+                    <a target="_blank" href="https://github.com/Eddsonblanco"><i class="fab fa-github"></i></a>
+
+                    <a target="_blank" href="https://www.linkedin.com/in/eddson-blanco-94a919168/"><i id="linkedin"
+                            class="fab fa-linkedin-in"></i></a>
+
+                </div>
+
             </div>
-            <div id="cards" class="row d-flex align-items-center justify-content-between">
-                <div class="card middle">
-                    <div class="front">
-                        <img src="./assets/img/lamas2.png">
-                    </div>
-                    <div class="back">
-                        <div class="back-content middle">
-                            <a href="http://www.lamasrestaurant.com">
-                                <h2>Lamas Restaurant</h2>
-                            </a>
-                            <span>Created with</span>
-                            <div class="sm">
-                                <a><i class="fab fa-html5"></i> html</a>
-                                <a><i class="fab fa-css3"></i> css3</a>
-                                <a><i class="fab fa-js"></i> javaScript</a>
-                                <a target="_blank" href="https://github.com/Eddsonblanco/lamas-restaurant"><i
-                                        class="fab fa-github"></i> Github <- click </a> </div> </div> </div> </div> <div
-                                        class="card middle">
-                                        <div class="front">
-                                            <img src="https://images.unsplash.com/photo-1500835556837-99ac94a94552?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=80"
-                                                alt="">
-                                        </div>
-                                        <div class="back">
-                                            <div class="back-content middle">
-                                                <a target="_blank" href="https://eddsonblanco.github.io/TRVL./">
-                                                    <h2>Travel.</h2>
-                                                </a>
-                                                <span>Created with</span>
-                                                <div class="sm">
-                                                    <a><i class="fab fa-html5"></i> html</a>
-                                                    <a><i class="fab fa-css3"></i> css3</a>
-                                                    <a><i class="fab fa-js"></i> javaScript/ Jquery/ </a>
-                                                    <a>Bootstrap</a>
-                                                    <a target="_blank" href="https://github.com/Eddsonblanco/TRVL."><i
-                                                            class="fab fa-github"></i> Github <- click </a> </div>
-                                                            </div> </div> </div> <div class="card middle">
-                                                            <div class="front">
-                                                                <img src="./assets/img/CodingLife.png" alt="">
-                                                            </div>
-                                                            <div class="back">
-                                                                <div class="back-content middle">
-                                                                    <a target="_blank"
-                                                                        href="https://codinglifeucd.herokuapp.com/">
-                                                                        <h2>CodingLife ;</h2>
-                                                                    </a>
-                                                                    <span>Created with</span>
-                                                                    <div class="sm">
-                                                                        <a><i class="fab fa-html5"></i> html</a>
-                                                                        <a><i class="fab fa-css3"></i> css3</a>
-                                                                        <a><i class="fab fa-js"></i> javaScript</a>
-                                                                        <a><i class="fab fa-node-js">Nodejs</i></a>
-                                                                        <a><i class="fas fa-database"></i>MySql</a>
-                                                                        <a> Bootstrap</a>
-                                                                        <a target="_blank"
-                                                                            href="https://github.com/Eddsonblanco/ProjectTwo"><i
-                                                                                class="fab fa-github"></i> Github <-
-                                                                                click </a> </div> </div> </div> </div>
-                                                                                <div class="card middle">
-                                                                                <div class="front">
-                                                                                    <img src="./assets/img/train2.png"
-                                                                                        alt="">
-                                                                                </div>
-                                                                                <div class="back">
-                                                                                    <div class="back-content middle">
-                                                                                        <a target="_blank"
-                                                                                            href="https://eddsonblanco.github.io/TrainSchedule/">
-                                                                                            <h2>Train Schedule</h2>
-                                                                                        </a>
-                                                                                        <span>Created with</span>
-                                                                                        <div class="sm">
-                                                                                            <a><i
-                                                                                                    class="fab fa-html5"></i>
-                                                                                                html</a>
-                                                                                            <a><i
-                                                                                                    class="fab fa-css3"></i>
-                                                                                                css3</a>
-                                                                                            <a><i class="fab fa-js"></i>
-                                                                                                javaScript /</a>
-                                                                                            <a> Bootstrap</a>
-                                                                                            <a target="_blank"
-                                                                                                href="https://github.com/Eddsonblanco/TrainSchedule"><i
-                                                                                                    class="fab fa-github"></i>
-                                                                                                Github <- click</a>
-                                                                                                    </div> </div> </div>
-                                                                                                    </div> <div
-                                                                                                    class="card middle">
-                                                                                                    <div class="front">
-                                                                                                        <img src="./assets/img/scraper.png"
-                                                                                                            alt="">
-                                                                                                    </div>
-                                                                                                    <div class="back">
-                                                                                                        <div
-                                                                                                            class="back-content middle">
-                                                                                                            <a
-                                                                                                                href="!#">
-                                                                                                                <h2>Web-Scraper
-                                                                                                                </h2>
-                                                                                                            </a>
-                                                                                                            <span>Created
-                                                                                                                with</span>
-                                                                                                            <div
-                                                                                                                class="sm">
-                                                                                                                <a><i
-                                                                                                                        class="fab fa-html5"></i>
-                                                                                                                    html</a>
-                                                                                                                <a><i
-                                                                                                                        class="fab fa-css3"></i>
-                                                                                                                    css3</a>
-                                                                                                                <a><i
-                                                                                                                        class="fab fa-js"></i>
-                                                                                                                    javaScript/
-                                                                                                                    express/
-                                                                                                                    Nodejs
-                                                                                                                    /handlebars
-                                                                                                                    /cheerios/
-                                                                                                                    Axios</a>
-                                                                                                                <a><i
-                                                                                                                        class="fas fa-database"></i>Mongo</a>
-                                                                                                                <a>
-                                                                                                                    Bootstrap</a>
-                                                                                                                <a target="_blank"
-                                                                                                                    href="https://github.com/Eddsonblanco/web-scraper"><i
-                                                                                                                        class="fab fa-github"></i>
-                                                                                                                    Github
-                                                                                                                    <- click
-                                                                                                                        </a>
-                                                                                                                        </div>
-                                                                                                                        </div>
-                                                                                                                        </div>
-                                                                                                                        </div>
-                                                                                                                        <div
-                                                                                                                        class="card middle">
-                                                                                                                        <div
-                                                                                                                            class="front">
-                                                                                                                            <img src="./assets/img/triviagame.png"
-                                                                                                                                alt="">
-                                                                                                                        </div>
-                                                                                                                        <div
-                                                                                                                            class="back">
-                                                                                                                            <div
-                                                                                                                                class="back-content middle">
-                                                                                                                                <h2>Trivia
-                                                                                                                                    Game
-                                                                                                                                </h2>
-                                                                                                                                <span>Created
-                                                                                                                                    with</span>
-                                                                                                                                <div
-                                                                                                                                    class="sm">
-                                                                                                                                    <a><i
-                                                                                                                                            class="fab fa-html5"></i>
-                                                                                                                                        html</a>
-                                                                                                                                    <a><i
-                                                                                                                                            class="fab fa-css3"></i>
-                                                                                                                                        css3</a>
-                                                                                                                                    <a><i
-                                                                                                                                            class="fab fa-js"></i>
-                                                                                                                                        javaScript</a>
-                                                                                                                                    <a>
-                                                                                                                                        Bootstrap</a>
-                                                                                                                                    <!-- <a><i class="fab fa-node-js">Nodejs</i></a>
-                                <a><i class="fas fa-database"></i>MySql</a> -->
-                                                                                        
+
+        </div>
+        <div class="footer-copyright text-center py-3">© 2019 Copyright:
+            <a href="https://eddsonblanco.com"></a> Eddson Blanco</a>
+        </div>
+    </footer>
+
+
+
+  
                                                                     
 <!-- ------------- js scripts------------------ -->
-<script
-src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-crossorigin="anonymous"></script>
-<script
-src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-crossorigin="anonymous"></script>
-<script
-src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-crossorigin="anonymous"></script>
+<script type="text/javascript" src="js/materialize.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"crossorigin="anonymous"></script>
+<script type="text/javascript" src="./assets/js/js.js"></script>
 </body>
 
 </html>

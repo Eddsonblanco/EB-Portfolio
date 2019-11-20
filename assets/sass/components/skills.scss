@@ -1,26 +1,26 @@
 .skills-container {
-  background-color: #1f1e1e;
-  color: #fff;
-  height: 400px;
+  background: black;
+  color: #cecece;
+  height: 500px;
   display: grid;
   grid-template-columns: repeat(8, 1fr);
-  grid-template-rows: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
   grid-template-areas:
-    "title title title title title title title title"
+    ". . . . . . . ."
+    ". title title title title title title ."
     ". frontend . skills skills skills skills ."
     ". backend . BEskill BEskill BEskill BEskill ."
     ". tools . Tskills Tskills Tskills Tskills .";
 
   .skill-title {
-    color: #fff;
     grid-area: title;
     font-size: 1.8rem;
     letter-spacing: 0.8rem;
-    font-weight: 300;
+    font-weight: 300px;
     text-transform: uppercase;
     display: flex;
     justify-self: center;
-    align-self: center;
+    
     
   }
   .frontend {
@@ -41,8 +41,8 @@
       flex-wrap: wrap;
      
       li {
-        font-family: sans-serif;
-        color: rgb(224, 215, 215);
+        list-style: none;
+        color: #cecece;
         letter-spacing: 0.2rem;
         font-size: 1rem;
         margin: 0.3rem 1rem;
@@ -66,9 +66,11 @@
       flex-wrap: wrap;
       
       li {
-        letter-spacing: 0.1rem;
+        list-style: none;
+        color: #cecece;
+        letter-spacing: 0.2rem;
         font-size: 1rem;
-        margin: 0.3rem 0.6rem;
+        margin: 0.3rem 1rem;
       }
     }
   }
@@ -90,9 +92,10 @@
       flex-wrap: wrap;
      
       li {
-        letter-spacing: 0.1rem;
+        list-style: none;
+        letter-spacing: 0.2rem;
         font-size: 1rem;
-        margin: 0.3rem 0.6rem;
+        margin: 0.3rem 1rem;
       }
   }
 }}

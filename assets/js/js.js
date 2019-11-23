@@ -17,3 +17,4 @@ $(window).on('scroll', function (){
 $(document).ready(function(){
     $('.parallax').parallax();
   });
+

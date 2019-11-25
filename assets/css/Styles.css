@@ -12,13 +12,13 @@
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: 150px 650px 150px;
   grid-gap: 1em;
-  grid-template-areas: ". . . . . ." ". name name name name ." ". . . . . .";
+  grid-template-areas: ". . . . . ." "name name name name name name" ". . . . . .";
 }
 @media screen and (max-width: 750px) {
   #welcome {
     grid-template-rows: 120px 500px 120px;
     rid-gap: 0.3em;
-    grid-template-areas: ". . . . . ." ". name name name name ." ". . . . . .";
+    grid-template-areas: ". . . . . ." "name name name name name name" ". . . . . .";
   }
 }
 #welcome .name-container {
@@ -42,7 +42,7 @@
   letter-spacing: 8px;
   margin-top: 10px;
 }
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 900px) {
   #welcome .name-container div .name {
     font-size: 50px;
   }
@@ -58,6 +58,11 @@
   padding-right: 0.1em;
   padding-left: 0.2em;
 }
+@media screen and (max-width: 900px) {
+  #welcome .name-container div .lastName {
+    font-size: 50px;
+  }
+}
 @media screen and (max-width: 500px) {
   #welcome .name-container div .lastName {
     font-size: 50px;
@@ -71,6 +76,11 @@
   padding-top: 10px;
   padding-right: 0.1em;
   padding-left: 0.2em;
+}
+@media screen and (max-width: 585px) {
+  #welcome .name-container div .lastName.active {
+    margin-left: 0px;
+  }
 }
 #welcome .name-container .title {
   font-size: 20px;
@@ -174,6 +184,12 @@
   justify-content: space-between;
   align-items: center;
 }
+@media screen and (max-width: 500px) {
+  #welcome .black {
+    padding: 5px 10px;
+    justify-content: center;
+  }
+}
 #welcome .black .logo img {
   width: 65px;
   margin-left: 1em;
@@ -182,6 +198,12 @@
   color: #ffffff;
   line-height: 50px;
   letter-spacing: 0.1em;
+}
+@media screen and (max-width: 500px) {
+  #welcome .black ul li a {
+    letter-spacing: 0em;
+    font-size: 0.7rem;
+  }
 }
 
 footer {
@@ -217,7 +239,7 @@ html {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-row: 100px 100px 100px 400px;
-  gap: 10px;
+  gap: 5px;
   grid-template-areas: ". . ." "title title title" "frontend backend tools" "skills BEskill Tskills";
 }
 .skills-container .skill-title {
@@ -229,13 +251,22 @@ html {
   display: flex;
   justify-self: center;
 }
+.skills-container .frontend, .skills-container .backend, .skills-container .tools {
+  display: flex;
+  justify-content: center;
+  text-transform: uppercase;
+  letter-spacing: 0.5rem;
+  font-size: 1rem;
+}
+@media screen and (max-width: 500px) {
+  .skills-container .frontend, .skills-container .backend, .skills-container .tools {
+    letter-spacing: 0.2rem;
+    font-size: 0.8rem;
+    margin: 0.3rem 0.5rem;
+  }
+}
 .skills-container .frontend {
   grid-area: frontend;
-  font-size: 1rem;
-  display: flex;
-  letter-spacing: 0.5rem;
-  text-transform: uppercase;
-  justify-content: center;
 }
 .skills-container .skills {
   grid-area: skills;
@@ -251,16 +282,17 @@ html {
 .skills-container .skills ul li {
   list-style: none;
   color: #cecece;
-  letter-spacing: 0.2rem;
   font-size: 1rem;
-  margin: 0.3rem 1rem;
+  margin: 0.3rem;
+}
+@media screen and (max-width: 500px) {
+  .skills-container .skills ul li {
+    font-size: 0.8rem;
+  }
 }
 .skills-container .backend {
   grid-area: backend;
-  font-size: 1rem;
   display: flex;
-  letter-spacing: 0.5rem;
-  text-transform: uppercase;
   justify-content: center;
 }
 .skills-container .BEskills {
@@ -277,17 +309,16 @@ html {
 .skills-container .BEskills ul li {
   list-style: none;
   color: #cecece;
-  letter-spacing: 0.2rem;
   font-size: 1rem;
-  margin: 0.3rem 1rem;
+  margin: 0.2rem;
+}
+@media screen and (max-width: 500px) {
+  .skills-container .BEskills ul li {
+    font-size: 0.8rem;
+  }
 }
 .skills-container .tools {
   grid-area: tools;
-  font-size: 1rem;
-  display: flex;
-  letter-spacing: 0.5rem;
-  text-transform: uppercase;
-  justify-content: center;
 }
 .skills-container .Tskills {
   grid-area: Tskills;
@@ -302,9 +333,13 @@ html {
 }
 .skills-container .Tskills ul li {
   list-style: none;
-  letter-spacing: 0.2rem;
   font-size: 1rem;
-  margin: 0.3rem 1rem;
+  margin: 0.2rem;
+}
+@media screen and (max-width: 500px) {
+  .skills-container .Tskills ul li {
+    font-size: 0.8rem;
+  }
 }
 
 .banner {
@@ -344,6 +379,11 @@ html {
 .banner .bannerImg img {
   height: 250px;
 }
+@media screen and (max-width: 500px) {
+  .banner .bannerImg img {
+    height: 180px;
+  }
+}
 
 .projects_container .projects_title {
   font-size: 1.8rem;
@@ -357,10 +397,18 @@ html {
   height: 500px;
   display: grid;
   display: grid;
-  grid-template-columns: repeat(10, 1fr);
-  grid-template-rows: repeat(5, 1fr);
-  gap: 10px;
-  grid-template-areas: ". img img img img img title title  . ." ". img img img img img description description  description ." ". img img img img img description description description ." ". img img img img img tech tech tech ." ". img img img img img links links links  .";
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 5px;
+  grid-template-areas: "img img title title" "img img description description " "img img tech tech " "img img links links ";
+}
+@media screen and (max-width: 650px) {
+  .projects_container .project {
+    height: 700px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    grid-template-areas: ". title ." "img img img" "img img img" "description description description " "tech tech tech " "links links links ";
+  }
 }
 .projects_container .project .title {
   grid-area: title;
@@ -373,27 +421,58 @@ html {
   align-items: center;
 }
 .projects_container .project .img img {
-  height: 20em;
+  height: 15em;
+}
+@media screen and (max-width: 1000px) {
+  .projects_container .project .img img {
+    height: 12em;
+  }
+}
+@media screen and (max-width: 780px) {
+  .projects_container .project .img img {
+    height: 10em;
+  }
 }
 .projects_container .project .description {
   grid-area: description;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 10px;
+  padding: 5px;
+}
+@media screen and (max-width: 650px) {
+  .projects_container .project .description {
+    justify-self: center;
+  }
+}
+.projects_container .project .description p {
+  margin: 0;
+  padding: 5px;
 }
 .projects_container .project .tech {
   grid-area: tech;
   display: flex;
   flex-wrap: wrap;
 }
+@media screen and (max-width: 650px) {
+  .projects_container .project .tech {
+    justify-self: center;
+  }
+}
 .projects_container .project .tech .tech_li {
   margin: 5px;
   padding: 5px;
   list-style: none;
-  font-size: 1rem;
+  font-size: 0.8rem;
 }
 .projects_container .project .links {
   grid-area: links;
+}
+@media screen and (max-width: 650px) {
+  .projects_container .project .links {
+    justify-self: center;
+  }
 }
 .projects_container .project .links a:link, .projects_container .project .links a:visited {
   margin: 0.5rem;
@@ -414,11 +493,11 @@ html {
 }
 
 #MYN {
-  background: #215f00;
+  background: #5A3F37;
   /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #e4e4d9, #215f00);
+  background: -webkit-linear-gradient(to right, #2C7744, #5A3F37);
   /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #e4e4d9, #215f00);
+  background: linear-gradient(to right, #2C7744, #5A3F37);
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 

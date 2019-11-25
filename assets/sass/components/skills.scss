@@ -5,7 +5,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-row: 100px 100px 100px 400px;
-  gap: 10px;
+  gap: 5px;
   grid-template-areas:
     ". . ."
     "title title title"
@@ -23,13 +23,22 @@
     
     
   }
+  .frontend, .backend, .tools{
+    display: flex;
+    justify-content: center;
+    text-transform: uppercase;
+    letter-spacing: 0.5rem;
+    font-size: 1rem;
+    @media screen and (max-width: 500px){
+      letter-spacing: 0.2rem;
+      font-size: 0.8rem;
+      margin: 0.3rem 0.5rem;
+    }
+
+    }
+
   .frontend {
     grid-area: frontend;
-    font-size: 1rem;
-    display: flex;
-    letter-spacing: 0.5rem;
-    text-transform: uppercase;
-    justify-content: center;
   }
   .skills {
     grid-area: skills;
@@ -46,18 +55,17 @@
       li {
         list-style: none;
         color: #cecece;
-        letter-spacing: 0.2rem;
         font-size: 1rem;
-        margin: 0.3rem 1rem;
+        margin:0.3rem;
+        @media screen and (max-width: 500px){
+          font-size: 0.8rem;
+        }
       }
     }
   }
   .backend {
     grid-area: backend;
-    font-size: 1rem;
     display: flex;
-    letter-spacing: 0.5rem;
-    text-transform: uppercase;
     justify-content: center;
   }
   .BEskills {
@@ -74,20 +82,16 @@
       li {
         list-style: none;
         color: #cecece;
-        letter-spacing: 0.2rem;
         font-size: 1rem;
-        margin: 0.3rem 1rem;
+        margin: 0.2rem;
+        @media screen and (max-width: 500px){
+          font-size: 0.8rem;
+        }
       }
     }
   }
   .tools {
     grid-area: tools;
-    font-size: 1rem;
-    display: flex;
-    letter-spacing: 0.5rem;
-    text-transform: uppercase;
-    justify-content: center;
-    
   }
   .Tskills{
     grid-area: Tskills;
@@ -102,9 +106,11 @@
      
       li {
         list-style: none;
-        letter-spacing: 0.2rem;
         font-size: 1rem;
-        margin: 0.3rem 1rem;
+        margin: 0.2rem;
+        @media screen and (max-width: 500px){
+          font-size: 0.8rem;
+        }
       }
   }
 }}

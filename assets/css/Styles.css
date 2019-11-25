@@ -215,9 +215,10 @@ html {
   color: #cecece;
   height: 500px;
   display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  grid-template-rows: repeat(5, 1fr);
-  grid-template-areas: ". . . . . . . ." ". title title title title title title ." ". frontend . skills skills skills skills ." ". backend . BEskill BEskill BEskill BEskill ." ". tools . Tskills Tskills Tskills Tskills .";
+  grid-template-columns: repeat(3, 1fr);
+  grid-row: 100px 100px 100px 400px;
+  gap: 10px;
+  grid-template-areas: ". . ." "title title title" "frontend backend tools" "skills BEskill Tskills";
 }
 .skills-container .skill-title {
   grid-area: title;
@@ -230,19 +231,22 @@ html {
 }
 .skills-container .frontend {
   grid-area: frontend;
-  font-size: 1.2rem;
+  font-size: 1rem;
   display: flex;
-  letter-spacing: 0.8rem;
+  letter-spacing: 0.5rem;
   text-transform: uppercase;
+  justify-content: center;
 }
 .skills-container .skills {
   grid-area: skills;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 .skills-container .skills ul {
   display: flex;
   flex-wrap: wrap;
+  flex-direction: column;
 }
 .skills-container .skills ul li {
   list-style: none;
@@ -253,19 +257,22 @@ html {
 }
 .skills-container .backend {
   grid-area: backend;
-  font-size: 1.2rem;
+  font-size: 1rem;
   display: flex;
-  letter-spacing: 0.8rem;
+  letter-spacing: 0.5rem;
   text-transform: uppercase;
+  justify-content: center;
 }
 .skills-container .BEskills {
   grid-area: BEskill;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 .skills-container .BEskills ul {
   display: flex;
   flex-wrap: wrap;
+  flex-direction: column;
 }
 .skills-container .BEskills ul li {
   list-style: none;
@@ -276,19 +283,22 @@ html {
 }
 .skills-container .tools {
   grid-area: tools;
-  font-size: 1.2rem;
+  font-size: 1rem;
   display: flex;
-  letter-spacing: 0.8rem;
+  letter-spacing: 0.5rem;
   text-transform: uppercase;
+  justify-content: center;
 }
 .skills-container .Tskills {
   grid-area: Tskills;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 .skills-container .Tskills ul {
   display: flex;
   flex-wrap: wrap;
+  flex-direction: column;
 }
 .skills-container .Tskills ul li {
   list-style: none;
@@ -303,6 +313,14 @@ html {
   grid-template-areas: "slider slider img img";
   height: 400px;
 }
+@media screen and (max-width: 750px) {
+  .banner {
+    grid-template-columns: none;
+    grid-template-rows: 200px 300px;
+    grid-template-areas: "slider slider" "img img";
+    height: 500px;
+  }
+}
 .banner .slider {
   padding: 20px;
   margin: 20px;
@@ -310,16 +328,21 @@ html {
   display: flex;
   color: black;
   justify-content: center;
-  align-items: center;
+  align-self: center;
 }
 .banner .slider .carousel-item {
   text-align: center;
 }
 .banner .bannerImg {
   grid-area: img;
-  background: url("../img/responsive_design490.png");
   background-repeat: no-repeat;
   background-position: center center;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+}
+.banner .bannerImg img {
+  height: 250px;
 }
 
 .projects_container .projects_title {

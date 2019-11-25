@@ -3,14 +3,14 @@
   color: #cecece;
   height: 500px;
   display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  grid-template-rows: repeat(5, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+  grid-row: 100px 100px 100px 400px;
+  gap: 10px;
   grid-template-areas:
-    ". . . . . . . ."
-    ". title title title title title title ."
-    ". frontend . skills skills skills skills ."
-    ". backend . BEskill BEskill BEskill BEskill ."
-    ". tools . Tskills Tskills Tskills Tskills .";
+    ". . ."
+    "title title title"
+    "frontend backend tools"
+    "skills BEskill Tskills";
 
   .skill-title {
     grid-area: title;
@@ -25,20 +25,23 @@
   }
   .frontend {
     grid-area: frontend;
-    font-size: 1.2rem;
+    font-size: 1rem;
     display: flex;
-    letter-spacing: 0.8rem;
+    letter-spacing: 0.5rem;
     text-transform: uppercase;
+    justify-content: center;
   }
   .skills {
     grid-area: skills;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     
  
     ul {
       display: flex;
       flex-wrap: wrap;
+      flex-direction: column;
      
       li {
         list-style: none;
@@ -51,19 +54,22 @@
   }
   .backend {
     grid-area: backend;
-    font-size: 1.2rem;
+    font-size: 1rem;
     display: flex;
-    letter-spacing: 0.8rem;
+    letter-spacing: 0.5rem;
     text-transform: uppercase;
+    justify-content: center;
   }
   .BEskills {
     grid-area: BEskill ;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     
     ul {
       display: flex;
       flex-wrap: wrap;
+      flex-direction: column;
       
       li {
         list-style: none;
@@ -76,20 +82,23 @@
   }
   .tools {
     grid-area: tools;
-    font-size: 1.2rem;
+    font-size: 1rem;
     display: flex;
-    
-    letter-spacing: 0.8rem;
+    letter-spacing: 0.5rem;
     text-transform: uppercase;
+    justify-content: center;
+    
   }
   .Tskills{
     grid-area: Tskills;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     
     ul {
       display: flex;
       flex-wrap: wrap;
+      flex-direction: column;
      
       li {
         list-style: none;

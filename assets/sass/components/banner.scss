@@ -3,8 +3,16 @@
     grid-template-columns: repeat(4, 1fr);
     grid-template-areas:
       "slider slider img img";
-        
     height: 400px;
+
+    @media screen and (max-width: 750px){
+      grid-template-columns: none;
+      grid-template-rows: 200px 300px ;
+      grid-template-areas:
+      "slider slider" "img img";
+      height: 500px;
+    }
+      
      
     .slider{
         padding: 20px;
@@ -13,7 +21,7 @@
         display: flex;
         color: black;
         justify-content: center;
-        align-items: center;
+        align-self: center;
         
         .carousel-item{
           text-align: center;
@@ -22,12 +30,19 @@
     }
     .bannerImg{
     grid-area: img;
-   
-    background: url('../img/responsive_design490.png');
     background-repeat: no-repeat;
     background-position: center center ;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    img{
+      height: 250px;
+    }
     
     
     
     }
 }
+
+
+// grid-template-rows: repeat(2,1fr);
